@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/showVideoFragment">
+
+    <fragment
+        android:id="@+id/showVideoFragment"
+        android:name="rob.netflix2app.ShowVideoFragment"
+        android:label="fragment_show_video"
+        tools:layout="@layout/fragment_show_video" />
+    <fragment
+        android:id="@+id/homeNetflixFragment"
+        android:name="rob.netflix2app.HomeNetflixFragment"
+        android:label="fragment_home_netflix"
+        tools:layout="@layout/fragment_home_netflix" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="rob.netflix2app.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+</navigation>
