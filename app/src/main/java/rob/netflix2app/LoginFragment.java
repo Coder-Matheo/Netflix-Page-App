@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -22,7 +23,8 @@ public class LoginFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final String TAG = LoginFragment.class.getSimpleName();
-    TextView textView;
+    TextView textView, newAccountTextView;
+    LinearLayout linearLayout3,linearLayout4;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -67,15 +69,28 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         // Inflate the layout for this fragment
         textView = (TextView) view.findViewById(R.id.newAccountTextView);
+        linearLayout3 = view.findViewById(R.id.linearLayout3);
+        linearLayout4 = view.findViewById(R.id.linearLayout4);
+
         initialization(view);
         return view;
     }
 
+    boolean clickedBtn = true;
     private void initialization(View view) {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick: ");
+                if (!clickedBtn){
+                    linearLayout3.setVisibility(View.GONE);
+                    linearLayout4.setVisibility(View.VISIBLE);
+                    clickedBtn = false;
+                }else{
+                    linearLayout3.setVisibility(View.GONE);
+                    linearLayout4.setVisibility(View.VISIBLE);
+                }
+
             }
         });
     }
