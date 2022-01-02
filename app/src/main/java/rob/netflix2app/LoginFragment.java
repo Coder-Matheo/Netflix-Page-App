@@ -2,65 +2,50 @@ package rob.netflix2app;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LoginFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
 public class LoginFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private AutoCompleteTextView emailEditText;
+    private EditText passwordEditText;
+    private ImageButton loginButton;
+    private TextView registerTextView;
+
     private static final String TAG = LoginFragment.class.getSimpleName();
-    TextView textView, newAccountTextView;
+    TextView  newAccountTextView;
     LinearLayout linearLayout3,linearLayout4;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public LoginFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment LoginFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static LoginFragment newInstance(String param1, String param2) {
-        LoginFragment fragment = new LoginFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 
-        
     }
 
     @Override
@@ -68,32 +53,88 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         // Inflate the layout for this fragment
-        textView = (TextView) view.findViewById(R.id.newAccountTextView);
-        linearLayout3 = view.findViewById(R.id.linearLayout3);
-        linearLayout4 = view.findViewById(R.id.linearLayout4);
+
 
         initialization(view);
+        emailCheckAutoCompleteTextView(this);
         return view;
     }
 
-    boolean clickedBtn = true;
+
+
+
     private void initialization(View view) {
-        textView.setOnClickListener(new View.OnClickListener() {
+        emailEditText = view.findViewById(R.id.emailEditText);
+        passwordEditText = view.findViewById(R.id.passwordEditText);
+        loginButton = view.findViewById(R.id.login_btn);
+
+
+
+    }
+
+    private void emailCheckAutoCompleteTextView(LoginFragment loginFragment) {
+        emailEditText.getText().toString();
+        String[] COUNTRIES = new String[]{
+                "Belgium", "France", "Italy", "Germany", "Spain"
+        };
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(loginFragment.getContext(), android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+        emailEditText.setAdapter(adapter);
+        emailEditText.setThreshold(1);
+
+        emailEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View view) {
-                Log.i(TAG, "onClick: ");
-                if (!clickedBtn){
-                    linearLayout3.setVisibility(View.GONE);
-                    linearLayout4.setVisibility(View.VISIBLE);
-                    clickedBtn = false;
-                }else{
-                    linearLayout3.setVisibility(View.GONE);
-                    linearLayout4.setVisibility(View.VISIBLE);
-                }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Log.i(TAG, "onTextChanged: "+ charSequence);
+                emailValidation( charSequence);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
 
             }
         });
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick: "+ emailEditText.getText().toString());
+
+            }
+        });
+
+
     }
 
+    public boolean emailValidation(CharSequence email){
 
+        if (email.length() != 0){
+            String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(email);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        NavController navController = Navigation.findNavController(view);
+        registerTextView = view.findViewById(R.id.registerTextView);
+        registerTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_loginFragment_to_registerFragment);
+            }
+        });
+
+
+    }
 }

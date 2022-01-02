@@ -13,10 +13,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LoginFragment loginFragment = new LoginFragment();
+        //Don't need, because we used Navigation of MainLayout
 
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.main_container, loginFragment).commit();
+        //LoginFragment loginFragment = new LoginFragment();
+
+        //FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        //fragmentTransaction.replace(R.id.main_container, loginFragment).commit();
     }
 
 }

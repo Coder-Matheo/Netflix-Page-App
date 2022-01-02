@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/showVideoFragment">
+    app:startDestination="@id/loginFragment">
 
-    <fragment
-        android:id="@+id/showVideoFragment"
-        android:name="rob.netflix2app.ShowVideoFragment"
-        android:label="fragment_show_video"
-        tools:layout="@layout/fragment_show_video" />
-    <fragment
-        android:id="@+id/homeNetflixFragment"
-        android:name="rob.netflix2app.HomeNetflixFragment"
-        android:label="fragment_home_netflix"
-        tools:layout="@layout/fragment_home_netflix" />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="rob.netflix2app.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="rob.netflix2app.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
 </navigation>

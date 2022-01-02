@@ -34,8 +34,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
-    implementation 'androidx.navigation:navigation-fragment:2.3.5'
-    implementation 'androidx.navigation:navigation-ui:2.3.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
@@ -46,4 +44,38 @@ dependencies {
 
     //CardView
     implementation 'androidx.cardview:cardview:1.0.0'
+
+
+    //Lifecycle components
+    def room_version = "1.1.1"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+
+    //ViewModel and LiveData
+    def lifecycle_version = "2.1.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+
+    //swiperefreshlayout Library
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    //Swipe Left and Right Library
+    implementation "it.xabaras.android:recyclerview-swipedecorator:1.2.1"
+
+    //design color and Image swiper Library
+    implementation "com.google.android.material:material:1.0.0"
+
+
+    implementation 'com.google.android.material:material:1.5.0-alpha02'
+    implementation 'com.google.android.material:material:1.4.0'
+
+    //Floating Button
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+
+    //ViewPager2 Library
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    //Library
+    implementation 'androidx.navigation:navigation-fragment:2.4.0-beta02'
+    implementation 'androidx.navigation:navigation-ui:2.4.0-beta02'
+
 }
