@@ -1,10 +1,15 @@
 package rob.netflix2app;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -22,8 +27,15 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import rob.netflix2app.RoomDatabase.BioObj;
+import rob.netflix2app.RoomDatabase.DatabaseViewModel;
+import rob.netflix2app.RoomDatabase.MySingleton_Bio_DB;
 
 
 public class LoginFragment extends Fragment {
@@ -32,6 +44,7 @@ public class LoginFragment extends Fragment {
     private EditText passwordEditText;
     private ImageButton loginButton;
     private TextView registerTextView;
+    DatabaseViewModel databaseViewModel;
 
     private static final String TAG = LoginFragment.class.getSimpleName();
     TextView  newAccountTextView;
@@ -45,6 +58,9 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        databaseViewModel = ViewModelProviders.of(this).get(DatabaseViewModel.class);
+
 
     }
 
@@ -91,33 +107,87 @@ public class LoginFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 Log.i(TAG, "onTextChanged: "+ charSequence);
-                emailValidation( charSequence);
+                boolean boolEmailValidation = emailValidation( charSequence);
+                if (boolEmailValidation){
+                    loginButton.setEnabled(true);
+                }else {
+                    loginButton.setEnabled(false);
+                }
+
+
+
+                loginButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //HERE WORK
+                        List<BioObj> returnValidation =  checkExistsUserInDatabase(emailEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
+                        Log.i(TAG, "onClick: "+ returnValidation.toString());
+                    }
+                });
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
+            public void afterTextChanged(Editable editable) { }
         });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i(TAG, "onClick: "+ emailEditText.getText().toString());
-
-            }
-        });
-
 
     }
 
-    public boolean emailValidation(CharSequence email){
 
+    public List<BioObj> checkExistsUserInDatabase(String emailAddress, String password){
+        List<BioObj> existsUserList = new ArrayList<>();
+
+        if (!emailAddress.isEmpty() && !password.isEmpty()){
+            BioObj login_username_password = new BioObj(emailEditText.getText().toString().trim().toUpperCase(),
+                    passwordEditText.getText().toString().trim());
+            InsertAsyncTask insertAsyncTask = new InsertAsyncTask();
+            //insertAsyncTask.execute(login_username_password);
+
+        }
+
+        LiveData<List<BioObj>> userList = MySingleton_Bio_DB.getInstance(getContext())
+                .databaseBio_dao()
+                .getAllUsers();
+
+        userList.observe(LoginFragment.this, new Observer<List<BioObj>>() {
+            @Override
+            public void onChanged(List<BioObj> bioObjs) {
+                if (bioObjs != null){
+                    for (int i = 0; i < bioObjs.size(); i++){
+                        Log.i(TAG, "onChanged: "+ bioObjs.get(i).getUserName());
+                        Log.i(TAG, "onChanged: "+ bioObjs.get(i).getPassword());
+
+
+                    }
+                }
+            }
+        });
+
+
+
+        LiveData<BioObj> userFind = MySingleton_Bio_DB.getInstance(getContext())
+                .databaseBio_dao()
+                .findUserByNamePass(emailEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
+
+        userFind.observe(LoginFragment.this, new Observer<BioObj>() {
+            @Override
+            public void onChanged(BioObj bioObj) {
+                if (bioObj != null){
+                    Log.i(TAG, "onChanged11: "+ bioObj.getUserName());
+                    existsUserList.add(new BioObj(bioObj.getUserName(), bioObj.getPassword()));
+                }
+
+            }
+        });
+        return existsUserList;
+    }
+
+
+    public boolean emailValidation(CharSequence email){
         if (email.length() != 0){
             String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
             Pattern pattern = Pattern.compile(regex);
             Matcher matcher = pattern.matcher(email);
-            return true;
+            return matcher.matches();
         }
         return false;
     }
@@ -134,7 +204,18 @@ public class LoginFragment extends Fragment {
                 navController.navigate(R.id.action_loginFragment_to_registerFragment);
             }
         });
+    }
 
+    class InsertAsyncTask extends AsyncTask<BioObj, Void, Void>{
 
+        @Override
+        protected Void doInBackground(BioObj... bioObjs) {
+            MySingleton_Bio_DB.getInstance(getContext())
+                    .databaseBio_dao()
+                    .insertBio(bioObjs[0]);
+            Log.i(TAG, "doInBackground: Created");
+
+            return null;
+        }
     }
 }

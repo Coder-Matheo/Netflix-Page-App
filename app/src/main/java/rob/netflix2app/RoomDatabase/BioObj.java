@@ -42,7 +42,12 @@ public class BioObj {
     @ColumnInfo(name = "default9")
     private String default9;
 
-    public BioObj(String userName, String phoneNumber, String password, String bioProfile, String locProfile, String joinProfile, byte[] imgProfile) {
+    public BioObj(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
+    /*public BioObj(String phoneNumber, String bioProfile, String locProfile, String joinProfile, byte[] imgProfile) {
         this.userName = userName;
         this.phoneNumber = phoneNumber;
         this.password = password;
@@ -50,7 +55,7 @@ public class BioObj {
         this.locProfile = locProfile;
         this.joinProfile = joinProfile;
         this.imgProfile = imgProfile;
-    }
+    }*/
 
     public int getBid() {
         return bid;
