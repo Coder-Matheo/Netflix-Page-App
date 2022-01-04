@@ -3,12 +3,146 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".RegisterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#20164a">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="1"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.71000004">
+
+            <AutoCompleteTextView
+                android:id="@+id/emailRegisterEditText"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_item"
+                android:drawableRight="@drawable/ic_email"
+                android:paddingRight="15dp"
+                android:drawablePadding="20dp"
+                android:ems="10"
+                android:hint="@string/email_string"
+                android:textColorHint="@color/white"
+                android:inputType="textEmailAddress"
+                android:paddingStart="20dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <AutoCompleteTextView
+                android:id="@+id/numberRegisterEditText"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_item"
+                android:drawableRight="@drawable/ic_phone"
+                android:paddingRight="15dp"
+                android:drawablePadding="20dp"
+                android:ems="10"
+                android:hint="Phone"
+                android:textColorHint="@color/white"
+                android:inputType="number"
+                android:paddingStart="20dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:textColorHint="@color/white"
+                android:textStyle="bold"
+                android:hint="@string/password_string"
+                app:hintTextColor="@color/white"
+                android:background="@android:color/transparent"
+                app:passwordToggleTint="@color/white"
+                android:drawableLeft="@drawable/ic_lock"
+                app:passwordToggleEnabled="true">
+                <EditText
+                    android:id="@+id/passwordEditText"
+                    android:layout_width="300dp"
+                    android:layout_height="48dp"
+
+                    android:background="@drawable/round_item"
+                    android:ems="10"
+                    android:textColorHint="@color/white"
+                    android:inputType="numberPassword"
+                    android:paddingStart="20dp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/loginPageTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing=".1"
+                android:text="Haven Account?"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/register_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/round_item"
+                android:src="@drawable/ic_arrow_forward"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="401dp"
+            android:layout_height="186dp"
+            android:background="@drawable/header_login"
+
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:letterSpacing=".2"
+                android:text="Register"
+                android:textColor="@color/white"
+                android:textSize="34sp"
+                android:textStyle="bold"
+
+                />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>

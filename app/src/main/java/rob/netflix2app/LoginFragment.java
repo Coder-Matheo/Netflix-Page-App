@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -21,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -29,7 +27,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,6 +42,8 @@ public class LoginFragment extends Fragment {
     private ImageButton loginButton;
     private TextView registerTextView;
     DatabaseViewModel databaseViewModel;
+
+
 
     private static final String TAG = LoginFragment.class.getSimpleName();
     TextView  newAccountTextView;
@@ -120,8 +119,8 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         //HERE WORK
-                        List<BioObj> returnValidation =  checkExistsUserInDatabase(emailEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
-                        Log.i(TAG, "onClick: "+ returnValidation.toString());
+                        checkExistsUserInDatabase(emailEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
+
                     }
                 });
             }
@@ -133,14 +132,14 @@ public class LoginFragment extends Fragment {
     }
 
 
-    public List<BioObj> checkExistsUserInDatabase(String emailAddress, String password){
+    public void checkExistsUserInDatabase(String emailAddress, String password){
         List<BioObj> existsUserList = new ArrayList<>();
 
         if (!emailAddress.isEmpty() && !password.isEmpty()){
             BioObj login_username_password = new BioObj(emailEditText.getText().toString().trim().toUpperCase(),
                     passwordEditText.getText().toString().trim());
             InsertAsyncTask insertAsyncTask = new InsertAsyncTask();
-            //insertAsyncTask.execute(login_username_password);
+            insertAsyncTask.execute(login_username_password);
 
         }
 
@@ -174,11 +173,14 @@ public class LoginFragment extends Fragment {
                 if (bioObj != null){
                     Log.i(TAG, "onChanged11: "+ bioObj.getUserName());
                     existsUserList.add(new BioObj(bioObj.getUserName(), bioObj.getPassword()));
+                    Log.i(TAG, "onChanged: "+ existsUserList.size());
+
                 }
 
             }
+
         });
-        return existsUserList;
+
     }
 
 
@@ -197,7 +199,7 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         NavController navController = Navigation.findNavController(view);
-        registerTextView = view.findViewById(R.id.registerTextView);
+        registerTextView = view.findViewById(R.id.registerPageTextView);
         registerTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -205,6 +207,7 @@ public class LoginFragment extends Fragment {
             }
         });
     }
+
 
     class InsertAsyncTask extends AsyncTask<BioObj, Void, Void>{
 

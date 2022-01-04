@@ -2,6 +2,7 @@ package rob.netflix2app.RoomDatabase;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -42,10 +43,20 @@ public class BioObj {
     @ColumnInfo(name = "default9")
     private String default9;
 
+    @Ignore
     public BioObj(String userName, String password) {
         this.userName = userName;
         this.password = password;
     }
+
+
+    public BioObj(String userName, String phoneNumber, String password) {
+        this.userName = userName;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+    }
+
+
 
     /*public BioObj(String phoneNumber, String bioProfile, String locProfile, String joinProfile, byte[] imgProfile) {
         this.userName = userName;
