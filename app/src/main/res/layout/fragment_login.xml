@@ -96,6 +96,7 @@
                 android:src="@drawable/ic_arrow_forward"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:onClick="log_func"
                 android:textSize="18sp" />
 
         </LinearLayout>

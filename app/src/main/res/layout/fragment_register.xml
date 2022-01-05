@@ -80,7 +80,6 @@
                     android:id="@+id/passwordEditText"
                     android:layout_width="300dp"
                     android:layout_height="48dp"
-
                     android:background="@drawable/round_item"
                     android:ems="10"
                     android:textColorHint="@color/white"

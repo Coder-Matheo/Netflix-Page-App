@@ -25,6 +25,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -42,6 +45,7 @@ public class LoginFragment extends Fragment {
     private ImageButton loginButton;
     private TextView registerTextView;
     DatabaseViewModel databaseViewModel;
+    NavController navController;
 
 
 
@@ -83,12 +87,10 @@ public class LoginFragment extends Fragment {
         passwordEditText = view.findViewById(R.id.passwordEditText);
         loginButton = view.findViewById(R.id.login_btn);
 
-
-
     }
 
     private void emailCheckAutoCompleteTextView(LoginFragment loginFragment) {
-        emailEditText.getText().toString();
+
         String[] COUNTRIES = new String[]{
                 "Belgium", "France", "Italy", "Germany", "Spain"
         };
@@ -105,12 +107,12 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Log.i(TAG, "onTextChanged: "+ charSequence);
                 boolean boolEmailValidation = emailValidation( charSequence);
                 if (boolEmailValidation){
                     loginButton.setEnabled(true);
                 }else {
                     loginButton.setEnabled(false);
+
                 }
 
 
@@ -119,8 +121,30 @@ public class LoginFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         //HERE WORK
-                        checkExistsUserInDatabase(emailEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
+                        LiveData<BioObj> userFind = MySingleton_Bio_DB.getInstance(getContext())
+                                .databaseBio_dao()
+                                .findUserByNamePass(emailEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
 
+                        userFind.observe(LoginFragment.this, new Observer<BioObj>() {
+                            @Override
+                            public void onChanged(BioObj bioObj) {
+
+                                if (bioObj != null){
+                                    //check, if Account exists would invoke SnackBar and Action Have Button jump to Registering Fragment
+                                    if (bioObj.getUserName().isEmpty() && bioObj.getPassword().isEmpty()){
+                                        Snackbar.make(view, "You haven't a Account", BaseTransientBottomBar.LENGTH_SHORT)
+                                                .setAction("Into", new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        navController.navigate(R.id.action_loginFragment_to_registerFragment);
+                                                    }
+                                                }).show();
+                                    }else {
+                                        Snackbar.make(view, "You have a Account", BaseTransientBottomBar.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
                     }
                 });
             }
@@ -132,7 +156,8 @@ public class LoginFragment extends Fragment {
     }
 
 
-    public void checkExistsUserInDatabase(String emailAddress, String password){
+
+    public void checkExistsUserInDatabase(String emailAddress,  String password){
         List<BioObj> existsUserList = new ArrayList<>();
 
         if (!emailAddress.isEmpty() && !password.isEmpty()){
@@ -172,13 +197,8 @@ public class LoginFragment extends Fragment {
             public void onChanged(BioObj bioObj) {
                 if (bioObj != null){
                     Log.i(TAG, "onChanged11: "+ bioObj.getUserName());
-                    existsUserList.add(new BioObj(bioObj.getUserName(), bioObj.getPassword()));
-                    Log.i(TAG, "onChanged: "+ existsUserList.size());
-
                 }
-
             }
-
         });
 
     }
@@ -198,7 +218,7 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        NavController navController = Navigation.findNavController(view);
+        navController = Navigation.findNavController(view);
         registerTextView = view.findViewById(R.id.registerPageTextView);
         registerTextView.setOnClickListener(new View.OnClickListener() {
             @Override
