@@ -1,6 +1,7 @@
 package rob.netflix2app;
 
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -41,6 +42,7 @@ import rob.netflix2app.RoomDatabase.MySingleton_Bio_DB;
  */
 public class RegisterFragment extends Fragment {
 
+    private static final String TAG = RegisterFragment.class.getSimpleName();
     private ImageButton register_btn;
     private TextView loginPageTextView;
     AutoCompleteTextView emailRegisterEditText;
@@ -129,12 +131,12 @@ public class RegisterFragment extends Fragment {
                                 if (bioObj != null){
                                     //check, if Account exists would invoke SnackBar and Action Have Button jump to Registering Fragment
                                     if (!bioObj.getUserName().isEmpty() && !bioObj.getPassword().isEmpty()){
-                                        Snackbar snackbar = Snackbar.make(view, "", BaseTransientBottomBar.LENGTH_SHORT);
+                                        Snackbar snackbar = Snackbar.make(view, "", BaseTransientBottomBar.LENGTH_LONG);
 
                                         View custonSnackBar = getLayoutInflater().inflate(R.layout.customsnackbar, null);
                                         snackbar.getView().setBackgroundColor(Color.TRANSPARENT);
                                         Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
-                                        Button btnSnackBar = custonSnackBar.findViewById(R.id.button3);
+                                        Button btnSnackBar = custonSnackBar.findViewById(R.id.snackButton);
                                         snackbarLayout.setPadding(0,0,0,0);
 
                                         snackbarLayout.addView(custonSnackBar, 0);
@@ -143,20 +145,22 @@ public class RegisterFragment extends Fragment {
                                         btnSnackBar.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                Log.i("TAG", "onClick: ");
+                                                navController.navigate(R.id.action_registerFragment_to_loginFragment);
                                             }
                                         });
 
-                                        Snackbar.make(view, "You haven a Account", BaseTransientBottomBar.LENGTH_SHORT)
-                                                .setAction("Into", new View.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(View view) {
-                                                       navController.navigate(R.id.action_registerFragment_to_loginFragment);
-                                                    }
-                                                }).show();
 
                                     }else {
-                                        Snackbar.make(view, "You Haven't a Account ", BaseTransientBottomBar.LENGTH_SHORT).show();
+                                        if (!emailRegisterEditText.getText().toString().isEmpty() && !passwordEditText.getText().toString().isEmpty()){
+                                            BioObj login_username_password = new BioObj(emailRegisterEditText.getText().toString().trim().toUpperCase(),
+                                                    passwordEditText.getText().toString().trim());
+
+                                            RegisterFragment.InsertAsyncTask insertAsyncTask = new RegisterFragment.InsertAsyncTask();
+                                            insertAsyncTask.execute(login_username_password);
+
+                                            Snackbar.make(view, "You Haven't a Account ", BaseTransientBottomBar.LENGTH_SHORT).show();
+                                        }
+
                                     }
                                 }
                             }
@@ -195,5 +199,18 @@ public class RegisterFragment extends Fragment {
                 navController.navigate(R.id.action_registerFragment_to_loginFragment);
             }
         });
+    }
+
+    class InsertAsyncTask extends AsyncTask<BioObj, Void, Void> {
+
+        @Override
+        protected Void doInBackground(BioObj... bioObjs) {
+            MySingleton_Bio_DB.getInstance(getContext())
+                    .databaseBio_dao()
+                    .insertBio(bioObjs[0]);
+            Log.i(TAG, "doInBackground: Created");
+
+            return null;
+        }
     }
 }

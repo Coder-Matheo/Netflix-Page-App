@@ -1,6 +1,6 @@
 package rob.netflix2app;
 
-import android.os.AsyncTask;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -128,21 +129,36 @@ public class LoginFragment extends Fragment {
                         userFind.observe(LoginFragment.this, new Observer<BioObj>() {
                             @Override
                             public void onChanged(BioObj bioObj) {
+                                //verification, if user have a Account(Save in Database Bio), invoke the SnackBar
+                                try {
+                                    if (bioObj == null){
+                                        Snackbar snackbar = Snackbar.make(view, "", BaseTransientBottomBar.LENGTH_LONG);
 
-                                if (bioObj != null){
-                                    //check, if Account exists would invoke SnackBar and Action Have Button jump to Registering Fragment
-                                    if (bioObj.getUserName().isEmpty() && bioObj.getPassword().isEmpty()){
-                                        Snackbar.make(view, "You haven't a Account", BaseTransientBottomBar.LENGTH_SHORT)
-                                                .setAction("Into", new View.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(View view) {
-                                                        navController.navigate(R.id.action_loginFragment_to_registerFragment);
-                                                    }
-                                                }).show();
+                                        View custonSnackBar = getLayoutInflater().inflate(R.layout.customsnackbar, null);
+                                        snackbar.getView().setBackgroundColor(Color.TRANSPARENT);
+                                        Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+                                        TextView snackTextView = custonSnackBar.findViewById(R.id.snackTextView);
+                                        snackTextView.setText("You have a account ...");
+                                        Button btnSnackBar = custonSnackBar.findViewById(R.id.snackButton);
+                                        btnSnackBar.setText("Register");
+                                        snackbarLayout.setPadding(0,0,0,0);
+
+                                        snackbarLayout.addView(custonSnackBar, 0);
+                                        snackbar.show();
+                                        //check, if Account exists would invoke SnackBar and Action Have Button for jump to Registering Fragment
+                                        btnSnackBar.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                navController.navigate(R.id.action_loginFragment_to_registerFragment);
+                                            }
+                                        });
                                     }else {
                                         Snackbar.make(view, "You have a Account", BaseTransientBottomBar.LENGTH_SHORT).show();
                                     }
+                                }catch (Exception e){
+                                        e.printStackTrace();
                                 }
+
                             }
                         });
                     }
@@ -160,13 +176,7 @@ public class LoginFragment extends Fragment {
     public void checkExistsUserInDatabase(String emailAddress,  String password){
         List<BioObj> existsUserList = new ArrayList<>();
 
-        if (!emailAddress.isEmpty() && !password.isEmpty()){
-            BioObj login_username_password = new BioObj(emailEditText.getText().toString().trim().toUpperCase(),
-                    passwordEditText.getText().toString().trim());
-            InsertAsyncTask insertAsyncTask = new InsertAsyncTask();
-            insertAsyncTask.execute(login_username_password);
 
-        }
 
         LiveData<List<BioObj>> userList = MySingleton_Bio_DB.getInstance(getContext())
                 .databaseBio_dao()
@@ -229,16 +239,5 @@ public class LoginFragment extends Fragment {
     }
 
 
-    class InsertAsyncTask extends AsyncTask<BioObj, Void, Void>{
 
-        @Override
-        protected Void doInBackground(BioObj... bioObjs) {
-            MySingleton_Bio_DB.getInstance(getContext())
-                    .databaseBio_dao()
-                    .insertBio(bioObjs[0]);
-            Log.i(TAG, "doInBackground: Created");
-
-            return null;
-        }
-    }
 }
