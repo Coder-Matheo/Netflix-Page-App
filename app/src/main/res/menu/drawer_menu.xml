@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile_drawer"
+            android:icon="@drawable/ic_person"
+            android:title="@string/profile"/>
+        <item
+            android:id="@+id/nav_lists_drawer"
+            android:icon="@drawable/ic_article"
+            android:title="@string/lists" />
+        <item
+            android:id="@+id/nav_Topics_drawer"
+            android:icon="@drawable/ic_textsms"
+            android:title="@string/topics" />
+        <item
+            android:id="@+id/nav_bookmarks_drawer"
+            android:icon="@drawable/ic_bookmark"
+            android:title="@string/bookmarks" />
+        <item
+            android:id="@+id/nav_moments_drawer"
+            android:icon="@drawable/ic_bolt"
+            android:title="@string/moments" />
+        <item
+            android:id="@+id/nav_Purchases_drawer"
+            android:icon="@drawable/ic_store"
+            android:title="@string/purchases" />
+        <item
+            android:id="@+id/nav_Monetization_drawer"
+            android:icon="@drawable/ic_library_add"
+            android:title="@string/monetization" />
+    </group>
+
+    <item tools:ignore="MenuTitle">
+        <menu>
+            <item
+                android:id="@+id/nav_twitter_for_professionals"
+                android:icon="@drawable/ic_rocket"
+                android:title="@string/twitter_for_professionals" />
+
+        </menu>
+    </item>
+</menu>
