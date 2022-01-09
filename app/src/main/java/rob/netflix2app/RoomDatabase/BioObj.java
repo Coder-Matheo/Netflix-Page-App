@@ -58,6 +58,9 @@ public class BioObj {
 
 
 
+
+
+
     /*public BioObj(String phoneNumber, String bioProfile, String locProfile, String joinProfile, byte[] imgProfile) {
         this.userName = userName;
         this.phoneNumber = phoneNumber;

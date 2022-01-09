@@ -1,4 +1,4 @@
-package rob.netflix2app;
+package rob.netflix2app.Registering;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -31,6 +31,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import rob.netflix2app.R;
 import rob.netflix2app.RoomDatabase.BioObj;
 import rob.netflix2app.RoomDatabase.DatabaseViewModel;
 import rob.netflix2app.RoomDatabase.MySingleton_Bio_DB;
@@ -114,13 +115,16 @@ public class RegisterFragment extends Fragment {
                 boolean boolEmailValidation = emailValidation( charSequence);
                 if (boolEmailValidation){
                     register_btn.setEnabled(true);
+                    Log.i(TAG, "onTextChanged: ");
                 }else {
                     register_btn.setEnabled(false);
                 }
 
                 register_btn.setOnClickListener(new View.OnClickListener() {
+                    
                     @Override
                     public void onClick(View view) {
+                        navController.navigate(R.id.action_registerFragment_to_customizeYourAccountRegistering);
                         LiveData<BioObj> userFind = MySingleton_Bio_DB.getInstance(getContext())
                                 .databaseBio_dao()
                                 .findUserByNamePass(emailRegisterEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
@@ -192,6 +196,8 @@ public class RegisterFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         navController = Navigation.findNavController(view);
+
+        //navController.navigate(R.id.action_registerFragment_to_customizeYourAccountRegistering);
 
         loginPageTextView.setOnClickListener(new View.OnClickListener() {
             @Override

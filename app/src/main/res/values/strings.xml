@@ -6,4 +6,16 @@
     <string name="password_string">Password</string>
     <string name="email_string">Email</string>
     <string name="new_account_string">Register</string>
+    <string name="navigation_drawer_open">open drawer navigation</string>
+    <string name="navigation_drawer_close">close drawer navigation</string>
+    <string name="username">username</string>
+    <string name="twitter_for_professionals">Twitter for Professionals</string>
+    <string name="monetization">Monetization</string>
+    <string name="purchases">Purchases</string>
+    <string name="moments">Moments</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="topics">Topics</string>
+    <string name="lists">Lists</string>
+    <string name="profile">Profile</string>
+
 </resources>

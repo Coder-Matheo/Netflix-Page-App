@@ -1,17 +1,8 @@
 package rob.netflix2app;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -26,6 +17,15 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -37,6 +37,7 @@ import java.util.regex.Pattern;
 import rob.netflix2app.RoomDatabase.BioObj;
 import rob.netflix2app.RoomDatabase.DatabaseViewModel;
 import rob.netflix2app.RoomDatabase.MySingleton_Bio_DB;
+import rob.netflix2app.Screen.ScreenMainActivity;
 
 
 public class LoginFragment extends Fragment {
@@ -74,6 +75,8 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         // Inflate the layout for this fragment
 
+        Intent intentToScreenActivity = new Intent(getActivity(), ScreenMainActivity.class);
+        //startActivity(intentToScreenActivity);
 
         initialization(view);
         emailCheckAutoCompleteTextView(this);
@@ -121,7 +124,8 @@ public class LoginFragment extends Fragment {
                 loginButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //HERE WORK
+                        //check database, if username and password exists, then return the value.
+                        //if return Value Password and Username, leap to ScreenActivity
                         LiveData<BioObj> userFind = MySingleton_Bio_DB.getInstance(getContext())
                                 .databaseBio_dao()
                                 .findUserByNamePass(emailEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
@@ -154,6 +158,7 @@ public class LoginFragment extends Fragment {
                                         });
                                     }else {
                                         Snackbar.make(view, "You have a Account", BaseTransientBottomBar.LENGTH_SHORT).show();
+
                                     }
                                 }catch (Exception e){
                                         e.printStackTrace();
@@ -207,13 +212,15 @@ public class LoginFragment extends Fragment {
             public void onChanged(BioObj bioObj) {
                 if (bioObj != null){
                     Log.i(TAG, "onChanged11: "+ bioObj.getUserName());
+
+
                 }
             }
         });
 
     }
 
-
+    //prove the email address is correct, then return true or false
     public boolean emailValidation(CharSequence email){
         if (email.length() != 0){
             String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
@@ -224,6 +231,7 @@ public class LoginFragment extends Fragment {
         return false;
     }
 
+    //Move the LoginFragment to RegisterFragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -237,7 +245,4 @@ public class LoginFragment extends Fragment {
             }
         });
     }
-
-
-
 }
