@@ -82,5 +82,8 @@ dependencies {
 
     implementation 'com.android.support:design:28.0.0'
 
+    //library for Switch in customize layout
+    implementation "com.polyak:icon-switch:1.0.0"
+
 
 }

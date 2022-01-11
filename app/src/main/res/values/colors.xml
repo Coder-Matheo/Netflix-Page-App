@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorOfNextCustomizeButton">#2196F3</color>
+    <color name="next_text_button_customize_shape">#000000</color>
+    <color name="connect_with_people_you_know_color">#060505</color>
+    <color name="link_help_center_color">#3B02BA</color>
+    <color name="background_color_costomize_register">#fffff0</color>
 </resources>

@@ -9,5 +9,5 @@
         android:id="@+id/SingUp_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Press Button" />
+        android:text="Sign Up" />
 </FrameLayout>

@@ -17,5 +17,12 @@
     <string name="topics">Topics</string>
     <string name="lists">Lists</string>
     <string name="profile">Profile</string>
+    <string name="customize_your_experience">Customize your experience</string>
+
+    <string name="lets_others_find_your_twitter_account_by_n_your_phone_number">Lets others find your Twitter account by\n your phone number</string>
+    <string name="for_more_details_about_these_settings_visit_the">For more details about these settings, visit the</string>
+    <string name="next">Next</string>
+    <string name="help_center_text">Help Center</string>
+    <string name="connect_with_people_you_know">connect with people you know</string>
 
 </resources>

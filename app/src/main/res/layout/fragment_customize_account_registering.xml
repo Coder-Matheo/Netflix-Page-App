@@ -3,11 +3,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".Registering.customizeAccountRegistering">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="26dp"
+        android:paddingStart="26dp"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/customize_your_experience"
+            android:textAppearance="@style/MaterialAlertDialog.MaterialComponents.Title.Icon"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/font_title"
+            android:layout_gravity="center"
+            />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_title"
+                android:text="@string/lets_others_find_your_twitter_account_by_n_your_phone_number"
+                />
+
+            <com.polyak.iconswitch.IconSwitch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                app:isw_icon_size="15dp"
+                app:isw_icon_left="@drawable/ic_zero_num"
+                app:isw_icon_right="@drawable/ic_one_num"
+                app:isw_thumb_color_left="#ffffff"
+                app:isw_thumb_color_right="@color/purple_200"
+                app:isw_active_tint_icon_left="@color/teal_700"
+                app:isw_active_tint_icon_right="#F44336"
+                app:isw_inactive_tint_icon_left="#FFC107"
+                app:isw_inactive_tint_icon_right="#009688"
+                android:scrollbarThumbHorizontal="@color/black"
+
+
+                />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/for_more_details_about_these_settings_visit_the"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/help_center_text"
+                android:textStyle="normal"
+                android:textColor="@color/link_help_center_color"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
     <Button
         android:id="@+id/buttonCustome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_margin="16dp"
+        android:textStyle="bold"
+
+        android:layout_gravity="bottom|center"
+
+        android:textColor="@color/next_text_button_customize_shape"
+        android:background="@drawable/next_button_customize_shape"
+        android:text="@string/next" />
 </FrameLayout>

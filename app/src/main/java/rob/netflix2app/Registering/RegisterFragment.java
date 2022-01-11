@@ -197,7 +197,7 @@ public class RegisterFragment extends Fragment {
 
         navController = Navigation.findNavController(view);
 
-        //navController.navigate(R.id.action_registerFragment_to_customizeYourAccountRegistering);
+        navController.navigate(R.id.action_registerFragment_to_customizeYourAccountRegistering);
 
         loginPageTextView.setOnClickListener(new View.OnClickListener() {
             @Override
