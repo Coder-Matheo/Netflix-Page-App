@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -27,7 +26,6 @@
             app:layout_constraintVertical_bias="0.71000004">
 
 
-
             <AutoCompleteTextView
                 android:id="@+id/emailEditText"
                 android:layout_width="300dp"
@@ -36,28 +34,30 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/round_item"
                 android:drawableRight="@drawable/ic_email"
-                android:paddingRight="15dp"
                 android:drawablePadding="20dp"
                 android:ems="10"
                 android:hint="@string/email_string"
-                android:textColorHint="@color/white"
                 android:inputType="textEmailAddress"
                 android:paddingStart="20dp"
+                android:paddingRight="15dp"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="300dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/ic_lock"
+                android:hint="@string/password_string"
                 android:textColorHint="@color/white"
                 android:textStyle="bold"
-                android:hint="@string/password_string"
                 app:hintTextColor="@color/white"
-                android:background="@android:color/transparent"
-                app:passwordToggleTint="@color/white"
-                android:drawableLeft="@drawable/ic_lock"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white">
+
                 <EditText
                     android:id="@+id/passwordEditText"
                     android:layout_width="300dp"
@@ -65,10 +65,10 @@
 
                     android:background="@drawable/round_item"
                     android:ems="10"
-                    android:textColorHint="@color/white"
                     android:inputType="numberPassword"
                     android:paddingStart="20dp"
                     android:textColor="@color/white"
+                    android:textColorHint="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -93,10 +93,10 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:background="@drawable/round_item"
+                android:onClick="log_func"
                 android:src="@drawable/ic_arrow_forward"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:onClick="log_func"
                 android:textSize="18sp" />
 
         </LinearLayout>

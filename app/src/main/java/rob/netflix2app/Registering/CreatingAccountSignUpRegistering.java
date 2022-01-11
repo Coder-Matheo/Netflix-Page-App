@@ -1,53 +1,61 @@
 package rob.netflix2app.Registering;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import rob.netflix2app.R;
+import rob.netflix2app.Screen.ScreenMainActivity;
 
 public class CreatingAccountSignUpRegistering extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    EditText nameEditTextSignUp;
+    EditText phoneOrEmailEditTextSignUp;
+    EditText dataOfBirthEditTextSignUp;
+    Button signUpButton;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public CreatingAccountSignUpRegistering() {
         // Required empty public constructor
     }
 
-
-    public static CreatingAccountSignUpRegistering newInstance(String param1, String param2) {
-        CreatingAccountSignUpRegistering fragment = new CreatingAccountSignUpRegistering();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_your_account_sign_up_registering, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_your_account_sign_up_registering, container, false);
+        nameEditTextSignUp = view.findViewById(R.id.nameEditTextSignUp);
+        phoneOrEmailEditTextSignUp = view.findViewById(R.id.phoneOrEmailEditTextSignUp);
+        dataOfBirthEditTextSignUp = view.findViewById(R.id.dataOfBirthEditTextSignUp);
+        signUpButton = view.findViewById(R.id.singUp_Button);
+        signUpButtonFunction();
+
+
+        return view;
     }
+
+    private void signUpButtonFunction() {
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentToScreenActivity = new Intent(getActivity(), ScreenMainActivity.class);
+                startActivity(intentToScreenActivity);
+            }
+        });
+    }
+    
 }

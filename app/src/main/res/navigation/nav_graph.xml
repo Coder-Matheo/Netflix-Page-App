@@ -10,7 +10,7 @@
         android:id="@+id/loginFragment"
         android:name="rob.netflix2app.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
@@ -19,7 +19,7 @@
         android:id="@+id/registerFragment"
         android:name="rob.netflix2app.Registering.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_customizeYourAccountRegistering"
             app:destination="@id/customizeYourAccountRegistering" />
@@ -31,7 +31,7 @@
         android:id="@+id/customizeYourAccountRegistering"
         android:name="rob.netflix2app.Registering.customizeAccountRegistering"
         android:label="fragment_customize_your_account_registering"
-        tools:layout="@layout/fragment_customize_account_registering" >
+        tools:layout="@layout/fragment_customize_account_registering">
         <action
             android:id="@+id/action_customizeYourAccountRegistering_to_createYourAccountSignUpRegistering"
             app:destination="@id/createYourAccountSignUpRegistering" />

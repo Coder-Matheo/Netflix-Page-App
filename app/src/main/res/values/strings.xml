@@ -24,5 +24,13 @@
     <string name="next">Next</string>
     <string name="help_center_text">Help Center</string>
     <string name="connect_with_people_you_know">connect with people you know</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="phone_number_or_email_address_hint_text">Phone number or email address</string>
+    <string name="name_hint_text">Name</string>
+    <string name="date_of_birth_hint_text">Date of birth</string>
+    <string name="by_signing_up_you_agree_to_our_text">By signing up, you agree to our</string>
+    <string name="terms_text">Terms,</string>
+    <string name="privacy_policy_text">Privacy Policy,</string>
+    <string name="and_cookie_use_text">and Cookie Use.</string>
 
 </resources>

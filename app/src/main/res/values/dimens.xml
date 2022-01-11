@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginTopTitle_H2_customize">20dp</dimen>
+    <dimen name="marginTopText_H2_customize">20dp</dimen>
+    <dimen name="marginTopHelpCenter_Text_Customize">20dp</dimen>
+</resources>

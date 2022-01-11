@@ -1,6 +1,13 @@
 package rob.netflix2app.Registering;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,10 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import com.polyak.iconswitch.IconSwitch;
 
 import rob.netflix2app.R;
 
@@ -20,6 +24,8 @@ public class customizeAccountRegistering extends Fragment {
 
     Button btn;
     NavController navController;
+    TextView helpCenterTextView;
+    IconSwitch customizeIconSwitch;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -56,10 +62,17 @@ public class customizeAccountRegistering extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_customize_account_registering, container, false);
         btn = view.findViewById(R.id.buttonCustome);
+        helpCenterTextView = view.findViewById(R.id.help_center_id);
+        customizeIconSwitch = view.findViewById(R.id.iconSwitchId);
 
+        helpCenterFunction();
+        iconSwitchFunction();
 
         return view;
     }
+
+
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -72,7 +85,30 @@ public class customizeAccountRegistering extends Fragment {
             }
         });
 
+    }
 
+    private void helpCenterFunction() {
+        helpCenterTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Help Center", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void iconSwitchFunction() {
+        customizeIconSwitch.setCheckedChangeListener(new IconSwitch.CheckedChangeListener() {
+            @Override
+            public void onCheckChanged(IconSwitch.Checked current) {
+               switch (current){
+                   case LEFT:
+                       Log.i("TAG", "onCheckChanged: left");
+                       break;
+                   case RIGHT:
+                       Log.i("TAG", "onCheckChanged: right");
+                       break;
 
+               }
+            }
+        });
     }
 }

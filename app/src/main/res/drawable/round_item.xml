@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list >
-    <item >
-        <shape android:name="rounded_item"
-            xmlns:android="http://schemas.android.com/apk/res/android"
+<layer-list>
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:name="rounded_item"
             android:shape="rectangle">
 
-            <corners android:radius="25dp"/>
-            <stroke android:color="@color/black" android:width="1dp" />
+            <corners android:radius="25dp" />
+            <stroke
+                android:width="1dp"
+                android:color="@color/black" />
             <solid android:color="#9f3f87" />
 
         </shape>

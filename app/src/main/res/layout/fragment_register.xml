@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Registering.RegisterFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,14 +33,14 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/round_item"
                 android:drawableRight="@drawable/ic_email"
-                android:paddingRight="15dp"
                 android:drawablePadding="20dp"
                 android:ems="10"
                 android:hint="@string/email_string"
-                android:textColorHint="@color/white"
                 android:inputType="textEmailAddress"
                 android:paddingStart="20dp"
+                android:paddingRight="15dp"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -53,14 +53,14 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/round_item"
                 android:drawableRight="@drawable/ic_phone"
-                android:paddingRight="15dp"
                 android:drawablePadding="20dp"
                 android:ems="10"
                 android:hint="Phone"
-                android:textColorHint="@color/white"
                 android:inputType="number"
                 android:paddingStart="20dp"
+                android:paddingRight="15dp"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -68,28 +68,30 @@
                 android:layout_width="300dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/ic_lock"
+                android:hint="@string/password_string"
                 android:textColorHint="@color/white"
                 android:textStyle="bold"
-                android:hint="@string/password_string"
                 app:hintTextColor="@color/white"
-                android:background="@android:color/transparent"
-                app:passwordToggleTint="@color/white"
-                android:drawableLeft="@drawable/ic_lock"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white">
+
                 <EditText
                     android:id="@+id/passwordEditText"
                     android:layout_width="300dp"
                     android:layout_height="48dp"
                     android:background="@drawable/round_item"
                     android:ems="10"
-                    android:textColorHint="@color/white"
                     android:inputType="numberPassword"
                     android:paddingStart="20dp"
                     android:textColor="@color/white"
+                    android:textColorHint="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:id="@+id/loginPageTextView"
                 android:layout_width="wrap_content"
