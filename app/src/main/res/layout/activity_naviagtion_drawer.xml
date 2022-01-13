@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Screen.ScreenMainActivity"
+
+    tools:context=".Screen.NavigationDrawerMainActivity"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -18,15 +19,33 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/teal_700"
+            android:background="@color/black"
             android:elevation="4dp"
             android:theme="@style/ThemeOfScreenToolbar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_twitter" />
+        </androidx.appcompat.widget.Toolbar>
 
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom"
+                app:menu="@menu/menu_bottom_navigation">
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+        </FrameLayout>
+
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -34,7 +53,9 @@
         android:layout_width="match_parent"
         android:layout_height="720dp"
         android:layout_gravity="start|bottom"
+        android:visibility="visible"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu" />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

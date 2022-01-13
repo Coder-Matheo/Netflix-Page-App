@@ -32,5 +32,6 @@
     <string name="terms_text">Terms,</string>
     <string name="privacy_policy_text">Privacy Policy,</string>
     <string name="and_cookie_use_text">and Cookie Use.</string>
+    <string name="home_tab_text">Home</string>
 
 </resources>

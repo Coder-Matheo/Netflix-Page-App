@@ -36,6 +36,7 @@
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_zero_num.xml" value="0.23697916666666666" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/next_button_customize_shape.xml" value="0.3452502553626149" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/round_item.xml" value="0.284375" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/round_item3.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/snackbar_back_item.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/switch_costom_shape.xml" value="0.3452502553626149" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/font/font.xml" value="0.3631256384065373" />
@@ -46,8 +47,9 @@
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/activity_display.xml" value="0.20729166666666668" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/activity_main.xml" value="0.18020833333333333" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/activity_main2.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/activity_naviagtion_drawer.xml" value="0.26935312831389185" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/activity_screen.xml" value="0.3145833333333333" />
-        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/activity_screen_main.xml" value="0.3138586956521739" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/activity_screen_main.xml" value="0.20277529095792302" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/customsnackbar.xml" value="0.3183876811594203" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_blank.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_create_your_account_sign_up_registering.xml" value="0.3292572463768116" />
@@ -55,13 +57,16 @@
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_home_netflix.xml" value="0.18020833333333333" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_login.xml" value="0.3183876811594203" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_message.xml" value="0.3138586956521739" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_profile.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_register.xml" value="0.264" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/item_contact.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/nav_header.xml" value="0.3138586956521739" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/nav_header2.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/nav_header_screen_drawer.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/menu/drawer_menu.xml" value="0.29259259259259257" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/menu/drawer_menu2.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/menu/drawer_menu_screen.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.25729166666666664" />
       </map>
     </option>
   </component>

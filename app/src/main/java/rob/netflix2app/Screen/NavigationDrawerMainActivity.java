@@ -7,8 +7,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,24 +20,37 @@ import com.google.android.material.navigation.NavigationView;
 
 import rob.netflix2app.R;
 
-public class ScreenMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class NavigationDrawerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    private static final String TAG = ScreenMainActivity.class.getSimpleName();
+    private static final String TAG = NavigationDrawerMainActivity.class.getSimpleName();
     DrawerLayout drawerLayout;
+    NavigationView navigationView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen_main);
+        setContentView(R.layout.activity_naviagtion_drawer);
 
 
+
+
+        initDrawerAndToolbar();
+
+        if (savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+             navigationView.setCheckedItem(R.id.nav_profile_drawer);
+
+        }
+    }
+
+    private void initDrawerAndToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
@@ -44,21 +59,26 @@ public class ScreenMainActivity extends AppCompatActivity implements NavigationV
         //get hamburger
         toggle.syncState();
 
+
+        //Resize photo
+        Drawable dr = getResources().getDrawable(R.drawable.avatar_photo);
+        Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
+        Drawable d2 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 40, 40, true));
+        toolbar.setNavigationIcon(d2);
+
+
+
         View header = navigationView.getHeaderView(0);
         ImageView imageAvatar = header.findViewById(R.id.img_profile);
         imageAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG, "onClick: ");
+                Toast.makeText(NavigationDrawerMainActivity.this, "Image Avatar Pressed", Toast.LENGTH_SHORT).show();
+                drawerLayout.closeDrawer(GravityCompat.START);
             }
         });
 
 
-        if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new MessageFragment()).commit();
-             navigationView.setCheckedItem(R.id.nav_profile_drawer);
-        }
     }
 
 
@@ -77,10 +97,13 @@ public class ScreenMainActivity extends AppCompatActivity implements NavigationV
         switch (item.getItemId()){
             case R.id.nav_profile_drawer:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new MessageFragment()).commit();
+                        new ProfileFragment()).commit();
+                Toast.makeText(this, "Chat", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.nav_lists_drawer:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new DisplayViewFragment()).commit();
                 Toast.makeText(this, "Chat", Toast.LENGTH_SHORT).show();
                 break;
 

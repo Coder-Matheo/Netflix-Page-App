@@ -37,7 +37,7 @@ import java.util.regex.Pattern;
 import rob.netflix2app.RoomDatabase.BioObj;
 import rob.netflix2app.RoomDatabase.DatabaseViewModel;
 import rob.netflix2app.RoomDatabase.MySingleton_Bio_DB;
-import rob.netflix2app.Screen.ScreenMainActivity;
+import rob.netflix2app.Screen.NavigationDrawerMainActivity;
 
 
 public class LoginFragment extends Fragment {
@@ -75,7 +75,7 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         // Inflate the layout for this fragment
 
-        Intent intentToScreenActivity = new Intent(getActivity(), ScreenMainActivity.class);
+        Intent intentToScreenActivity = new Intent(getActivity(), NavigationDrawerMainActivity.class);
         //startActivity(intentToScreenActivity);
 
         initialization(view);

@@ -3,8 +3,6 @@ package rob.netflix2app.Registering;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import rob.netflix2app.R;
-import rob.netflix2app.Screen.ScreenMainActivity;
+import rob.netflix2app.Screen.NavigationDrawerMainActivity;
 
 public class CreatingAccountSignUpRegistering extends Fragment {
 
@@ -52,7 +50,7 @@ public class CreatingAccountSignUpRegistering extends Fragment {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentToScreenActivity = new Intent(getActivity(), ScreenMainActivity.class);
+                Intent intentToScreenActivity = new Intent(getActivity(), NavigationDrawerMainActivity.class);
                 startActivity(intentToScreenActivity);
             }
         });
