@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/noInterestPopup"
+        android:icon="@drawable/ic_emoji_emotions"
+        android:title="Not interested in this Tweet" />
+    <item
+        android:id="@+id/unfollowPopup"
+        android:icon="@drawable/ic_person_unfollow"
+        android:title="Unfollow" />
+    <item
+        android:id="@+id/removeAddPopup"
+        android:icon="@drawable/ic_email"
+        android:title="Add/remove from Lists"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mutePopup"
+        android:icon="@drawable/ic_volume_mute"
+        android:title="Mute "
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/blockPopup"
+        android:icon="@drawable/ic_block"
+        android:title="Block"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/repostTweetPopup"
+        android:icon="@drawable/ic_flags"
+        android:title="Report Tweet"
+        app:showAsAction="never" />
+</menu>
