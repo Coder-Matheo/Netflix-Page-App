@@ -83,6 +83,8 @@ public class NavigationDrawerMainActivity extends AppCompatActivity implements N
             @Override
             public void onClick(View view) {
                 Toast.makeText(NavigationDrawerMainActivity.this, "Image Avatar Pressed", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ProfileFragment()).commit();
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
         });
