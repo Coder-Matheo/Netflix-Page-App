@@ -6,25 +6,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import rob.netflix2app.R;
+import rob.netflix2app.SearchFragment;
 
 public class NavigationDrawerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = NavigationDrawerMainActivity.class.getSimpleName();
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    BottomNavigationView bottomNavigationView;
+    NavController navController;
 
 
     @Override
@@ -38,11 +44,14 @@ public class NavigationDrawerMainActivity extends AppCompatActivity implements N
         initDrawerAndToolbar();
 
         if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DisplayViewFragment()).commit();
              navigationView.setCheckedItem(R.id.nav_profile_drawer);
 
         }
+
+        initBottomNavigationBarFunction();
     }
+
 
     private void initDrawerAndToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -79,8 +88,43 @@ public class NavigationDrawerMainActivity extends AppCompatActivity implements N
         });
 
 
+
+
+
     }
 
+    private void initBottomNavigationBarFunction() {
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home_nav_bottom:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new DisplayViewFragment()).commit();
+                        break;
+                    case R.id.search_nav_bottom:
+
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new SearchFragment()).commit();
+                        break;
+                    case R.id.notification_nav_bottom:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new NotificationsFragment()).commit();
+                        break;
+                    case R.id.private_nav_bottom:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new PrivateMessageFragment()).commit();
+                        break;
+
+                }
+                return true;
+            }
+        });
+
+
+    }
 
     @Override
     public void onBackPressed() {

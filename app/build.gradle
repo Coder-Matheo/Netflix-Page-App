@@ -86,5 +86,8 @@ dependencies {
     implementation "com.polyak:icon-switch:1.0.0"
 
 
+    def nav_version = "2.1.0-alpha06"
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
 
 }
