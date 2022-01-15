@@ -1,5 +1,6 @@
 package rob.netflix2app.Screen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,17 +21,15 @@ import java.util.List;
 import rob.netflix2app.R;
 
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements RecyclerViewClickInterface{
 
     private static final String TAG = HomeFragment.class.getSimpleName();
     View view;
     RecyclerView recyclerViewHome;
     List<TwitOfHome> lstTwit;
     RecyclerViewAdapter recyclerViewAdapterHome;
-    ImageButton commentImageView;
-    ImageView retweetImageView;
-    ImageView likeImageView;
-    ImageView shareImageView;
+    CommentRetweetLikeShare_Class commentRetweetLikeShare_class = new CommentRetweetLikeShare_Class();
+
 
 
     @Override
@@ -37,30 +38,47 @@ public class HomeFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerViewHome = view.findViewById(R.id.recyclerViewHome);
-        recyclerViewAdapterHome = new RecyclerViewAdapter(getContext(), lstTwit);
+        recyclerViewAdapterHome = new RecyclerViewAdapter(getContext(), lstTwit, this);
         recyclerViewHome.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewHome.setAdapter(recyclerViewAdapterHome);
-
-        commentImageView = view.findViewById(R.id.commentImageView);
-        retweetImageView = view.findViewById(R.id.retweetImageView);
-        likeImageView = view.findViewById(R.id.likeImageView);
-        shareImageView = view.findViewById(R.id.shareImageView);
-
-
-
         return view;
     }
+
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+        
         lstTwit = new ArrayList<>();
         lstTwit.add(new TwitOfHome("Franfurt 1", "(+12, +32)", R.drawable.fran1));
         lstTwit.add(new TwitOfHome("Franfurt 2", "(+17, +82)", R.drawable.fran2));
         lstTwit.add(new TwitOfHome("Franfurt 3", "(+120, +90)", R.drawable.fran3));
         lstTwit.add(new TwitOfHome("Franfurt 4", "(+28, +320)", R.drawable.fran4));
+    }
+
+
+    @Override
+    public void onItemCommentClickInterface(int position) {
+        Toast.makeText(getContext(), "Clickable", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemShareClickInterface(int position) {
+        Toast.makeText(getContext(), "Clickable2", Toast.LENGTH_SHORT).show();
+        commentRetweetLikeShare_class.shareTweetToAnotherApp(view);
+    }
+
+    @Override
+    public void onItemLikeClickInterface(int position) {
+        Toast.makeText(getContext(), "Clickable3", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemRetweetClickInterface(int position) {
+        Toast.makeText(getContext(), "Clickable4", Toast.LENGTH_SHORT).show();
     }
 
 
