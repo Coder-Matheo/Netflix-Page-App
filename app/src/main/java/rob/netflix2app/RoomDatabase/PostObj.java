@@ -42,6 +42,7 @@ public class PostObj {
     @ColumnInfo(name = "default9")
     private String default9;
 
+
     public PostObj(int bioId, String filmName, String filmTitle, String messagePost, String commentPost, String dataTime, byte[] image) {
         this.bioId = bioId;
         this.filmName = filmName;

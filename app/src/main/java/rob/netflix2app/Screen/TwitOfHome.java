@@ -2,22 +2,22 @@ package rob.netflix2app.Screen;
 
 public class TwitOfHome {
 
-    private String Name;
-    private String Phone;
+    private String username;
+    private String textTweet;
     private int phote;
 
-    public TwitOfHome(String name, String phone, int phone1) {
-        Name = name;
-        Phone = phone;
+    public TwitOfHome(String username, String textTweet, int phone1) {
+        this.username = username;
+        this.textTweet = textTweet;
         this.phote = phone1;
     }
 
-    public String getPhone() {
-        return Phone;
+    public String getTextTweet() {
+        return textTweet;
     }
 
-    public void setPhone(String phone) {
-        Phone = phone;
+    public void setTextTweet(String textTweet) {
+        this.textTweet = textTweet;
     }
 
     public int getPhote() {
@@ -28,12 +28,12 @@ public class TwitOfHome {
         this.phote = phote;
     }
 
-    public String getName() {
-        return Name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 }

@@ -19,8 +19,7 @@ public class CommentRetweetLikeShare_Class {
         itemView.getContext().startActivity(Intent.createChooser(shareTweet, "Share Via "));
     }
 
-    public void print() {
-        Log.i("TAG", "print: ");
-        System.out.print("Hallo");
+    void toastFunction(String message, Context context) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -119,8 +119,6 @@ public class LoginFragment extends Fragment {
 
                 }
 
-
-
                 loginButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -136,29 +134,9 @@ public class LoginFragment extends Fragment {
                                 //verification, if user have a Account(Save in Database Bio), invoke the SnackBar
                                 try {
                                     if (bioObj == null){
-                                        Snackbar snackbar = Snackbar.make(view, "", BaseTransientBottomBar.LENGTH_LONG);
-
-                                        View custonSnackBar = getLayoutInflater().inflate(R.layout.customsnackbar, null);
-                                        snackbar.getView().setBackgroundColor(Color.TRANSPARENT);
-                                        Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
-                                        TextView snackTextView = custonSnackBar.findViewById(R.id.snackTextView);
-                                        snackTextView.setText("You have a account ...");
-                                        Button btnSnackBar = custonSnackBar.findViewById(R.id.snackButton);
-                                        btnSnackBar.setText("Register");
-                                        snackbarLayout.setPadding(0,0,0,0);
-
-                                        snackbarLayout.addView(custonSnackBar, 0);
-                                        snackbar.show();
-                                        //check, if Account exists would invoke SnackBar and Action Have Button for jump to Registering Fragment
-                                        btnSnackBar.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                navController.navigate(R.id.action_loginFragment_to_registerFragment);
-                                            }
-                                        });
+                                        customizeSnackBarFunction(view, "You have a account ...", "Register");
                                     }else {
-                                        Snackbar.make(view, "You have a Account", BaseTransientBottomBar.LENGTH_SHORT).show();
-
+                                        customizeSnackBarFunction(view, "You have a Account", "Register");
                                     }
                                 }catch (Exception e){
                                         e.printStackTrace();
@@ -175,6 +153,7 @@ public class LoginFragment extends Fragment {
         });
 
     }
+
 
 
 
@@ -244,5 +223,28 @@ public class LoginFragment extends Fragment {
                 navController.navigate(R.id.action_loginFragment_to_registerFragment);
             }
         });
+    }
+    private void customizeSnackBarFunction(View view, String snackMessage, String buttonMessage) {
+        Snackbar snackbar = Snackbar.make(view, "", BaseTransientBottomBar.LENGTH_LONG);
+
+        View custonSnackBar = getLayoutInflater().inflate(R.layout.customsnackbar, null);
+        snackbar.getView().setBackgroundColor(Color.TRANSPARENT);
+        Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+        TextView snackTextView = custonSnackBar.findViewById(R.id.snackTextView);
+        snackTextView.setText(snackMessage);
+        Button btnSnackBar = custonSnackBar.findViewById(R.id.snackButton);
+        btnSnackBar.setText(buttonMessage);
+        snackbarLayout.setPadding(0,0,0,0);
+
+        snackbarLayout.addView(custonSnackBar, 0);
+        snackbar.show();
+        //check, if Account exists would invoke SnackBar and Action Have Button for jump to Registering Fragment
+        btnSnackBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_loginFragment_to_registerFragment);
+            }
+        });
+
     }
 }

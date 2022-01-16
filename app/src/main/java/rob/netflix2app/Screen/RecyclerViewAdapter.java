@@ -44,8 +44,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.tv_name.setText(mData.get(position).getName());
-        holder.tv_phone.setText(mData.get(position).getPhote());
+        holder.usernameTextViewItem.setText(mData.get(position).getUsername());
+        holder.tweetTextView.setText(mData.get(position).getTextTweet());
         holder.img.setImageResource(mData.get(position).getPhote());
     }
 
@@ -58,23 +58,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
         private LinearLayout item_conact;
-        private TextView tv_name;
-        private TextView tv_phone;
+        private TextView usernameTextViewItem;
+        private TextView tweetTextView;
         private ImageView img;
         ImageView moreOptionImageView;
         ImageView commentImageView;
         ImageView retweetImageView;
         ImageView likeImageView;
         ImageView shareImageView;
-        Context context;
+
 
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             item_conact = itemView.findViewById(R.id.conact_item_id);
-            tv_name = itemView.findViewById(R.id.usernameTextViewItem);
-            tv_phone = itemView.findViewById(R.id.tweetTextView);
+            usernameTextViewItem = itemView.findViewById(R.id.usernameTextViewItem);
+            tweetTextView = itemView.findViewById(R.id.tweetTextView);
             img = itemView.findViewById(R.id.imag_conact);
 
             moreOptionImageView = itemView.findViewById(R.id.moreOptionImageView);
@@ -85,13 +85,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             likeImageView = itemView.findViewById(R.id.likeImageView);
             shareImageView = itemView.findViewById(R.id.shareImageView);
 
-
-
-
             commentLikeRetweetShareFunction();
         }
 
         public void commentLikeRetweetShareFunction() {
+
 
             commentImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -111,15 +109,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             retweetImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(itemView.getContext(), "Hallo3", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(itemView.getContext(), " "+ mData.get(getAdapterPosition()).getTextTweet()
+                            + " : "+ mData.get(getAdapterPosition()).getUsername()+ " : "+ getAdapterPosition(), Toast.LENGTH_SHORT).show();
                     recyclerViewClickInterface.onItemRetweetClickInterface(getAdapterPosition());
                 }
             });
             shareImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(itemView.getContext(), "Hallo4", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(itemView.getContext(), "Hallo4 ", Toast.LENGTH_SHORT).show();
+
                     recyclerViewClickInterface.onItemShareClickInterface(getAdapterPosition());
+
                 }
             });
 
@@ -169,7 +170,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
         private void showToast(String message, String optional){
-            Toast.makeText(context, message+ optional, Toast.LENGTH_SHORT).show();
+            Toast.makeText(itemView.getContext(), message+ optional, Toast.LENGTH_SHORT).show();
         }
     }
 
