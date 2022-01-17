@@ -14,6 +14,7 @@
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/custom_track_costomize_shape.xml" value="0.23697916666666666" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/header_login.xml" value="0.284375" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_123.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_add.xml" value="0.30572916666666666" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_article.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_baseline_more_horiz_24.xml" value="0.21979166666666666" />
@@ -23,16 +24,19 @@
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_comment.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_email.xml" value="0.284375" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_heart.xml" value="0.35208333333333336" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_heart_broken.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_home.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_launcher_background.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_library_add.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_lock.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_message.xml" value="0.35208333333333336" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_more_horizntal.xml" value="0.30572916666666666" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_one_num.xml" value="0.23697916666666666" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_person.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_phone.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_profile.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_repeat.xml" value="0.35208333333333336" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_repeat_green.xml" value="0.30572916666666666" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_rocket.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_send.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/ic_share.xml" value="0.35208333333333336" />
@@ -57,6 +61,8 @@
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/activity_naviagtion_drawer.xml" value="0.1606962663975782" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/activity_screen.xml" value="0.3145833333333333" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/activity_screen_main.xml" value="0.20277529095792302" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/activity_test.xml" value="0.2552083333333333" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/conent_main.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/custom_item_menu.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/customsnackbar.xml" value="0.3183876811594203" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_blank.xml" value="0.33177083333333335" />
@@ -72,6 +78,8 @@
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_profile.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_register.xml" value="0.264" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_search.xml" value="0.3197463768115942" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_view_detail_tweet.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_view_detail_tweet_post.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/item_contact.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/item_tweet_recycler.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/nav_header.xml" value="0.3138586956521739" />

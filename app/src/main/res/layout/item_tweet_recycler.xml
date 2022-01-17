@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/conact_item_id"
-
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -14,7 +12,7 @@
         app:cardCornerRadius="30dp">
 
         <ImageView
-            android:id="@+id/imag_conact"
+            android:id="@+id/profile_of_tweet_item_recycler"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@mipmap/ic_launcher_round" />
@@ -22,6 +20,7 @@
 
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -33,37 +32,47 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/usernameTextViewItem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Username"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="'@Matheo Dinarvand'" />
-            </LinearLayout>
-
-            <LinearLayout
+                android:id="@+id/linear_layout_clickable_in_row_tweet_post"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tweetTextView"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/username_text_view_tweet_item_recycler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Username"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/user_id_image_view_tweet_item_recycler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="'@Matheo Dinarvand'" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxWidth="250dp"
-                    android:text="Tweet Text" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tweet_text_view_in_item_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="250dp"
+                        android:text="Tweet Text" />
 
 
+                </LinearLayout>
             </LinearLayout>
+            <!--end LinearLayout of clickable Tweet, for see detail Post -->
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -71,44 +80,93 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true">
+                    android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/commentImageView"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_comment" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-                    <ImageView
-                        android:id="@+id/retweetImageView"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_repeat" />
+                        android:layout_weight="1">
 
-                    <ImageView
-                        android:id="@+id/likeImageView"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_heart" />
+                        <ImageView
+                            android:id="@+id/commet_image_view_tweet_item_recycler"
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_comment" />
 
-                    <ImageView
-                        android:id="@+id/shareImageView"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        <TextView
+                            android:id="@+id/commet_text_view_tweet_item_recycler"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@drawable/ic_share" />
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/retweet_image_view_tweet_item_recycler"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_repeat" />
+
+                        <TextView
+                            android:id="@+id/retweet_text_view_tweet_item_recycler"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="0" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/like_image_view_tweet_item_recycler"
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_heart" />
+
+                        <TextView
+                            android:id="@+id/like_text_view_tweet_item_recycler"
+                            android:layout_width="10dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="0dp"
+                            android:layout_weight="1"
+
+                            android:text="1"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/share_image_view_tweet_item_recycler"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_share" />
+                    </LinearLayout>
+
                 </LinearLayout>
             </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"></LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -117,11 +175,11 @@
             android:gravity="end|right">
 
             <ImageView
-                android:id="@+id/moreOptionImageView"
+                android:id="@+id/more_option_image_view_tweet_item_recycler"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/black"
-                android:src="@drawable/ic_more_horiz" />
+                android:src="@drawable/ic_more_horizntal" />
 
         </LinearLayout>
 

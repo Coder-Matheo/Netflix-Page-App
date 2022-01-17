@@ -2,6 +2,8 @@ package rob.netflix2app.RoomDatabase;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.Insert;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -23,10 +25,10 @@ public class PostObj {
     private String dataTime;
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     private byte[] image;
-    @ColumnInfo(name = "default1")
-    private String default1;
-    @ColumnInfo(name = "default2")
-    private String default2;
+    @ColumnInfo(name = "comment")
+    private String comment;
+    @ColumnInfo(name = "like")
+    private Integer like;
     @ColumnInfo(name = "default3")
     private String default3;
     @ColumnInfo(name = "default4")
@@ -43,7 +45,19 @@ public class PostObj {
     private String default9;
 
 
-    public PostObj(int bioId, String filmName, String filmTitle, String messagePost, String commentPost, String dataTime, byte[] image) {
+    @Ignore
+    public PostObj(Integer like) {
+        this.like = like;
+    }
+
+    public PostObj(int bioId, String messagePost, Integer like) {
+        this.bioId = bioId;
+        this.messagePost = messagePost;
+        this.like = like;
+    }
+
+
+    /*public PostObj(int bioId, String filmName, String filmTitle, String messagePost, String commentPost, String dataTime, byte[] image) {
         this.bioId = bioId;
         this.filmName = filmName;
         this.filmTitle = filmTitle;
@@ -51,7 +65,7 @@ public class PostObj {
         this.commentPost = commentPost;
         this.dataTime = dataTime;
         this.image = image;
-    }
+    }*/
 
 
     public int getUid() {
@@ -118,20 +132,20 @@ public class PostObj {
         this.image = image;
     }
 
-    public String getDefault1() {
-        return default1;
+    public String getComment() {
+        return comment;
     }
 
-    public void setDefault1(String default1) {
-        this.default1 = default1;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    public String getDefault2() {
-        return default2;
+    public Integer getLike() {
+        return like;
     }
 
-    public void setDefault2(String default2) {
-        this.default2 = default2;
+    public void setLike(Integer like) {
+        this.like = like;
     }
 
     public String getDefault3() {

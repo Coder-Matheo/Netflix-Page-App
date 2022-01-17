@@ -8,9 +8,8 @@ import androidx.room.RoomDatabase;
 
 @Database(entities = {BioObj.class}, version = 1)
 public abstract class MySingleton_Bio_DB extends RoomDatabase {
+
     private static final String BIO_DB = "BIO_DB";
-
-
     public abstract DatabaseBio_Dao databaseBio_dao();
     private static volatile MySingleton_Bio_DB INSTANCE;
 

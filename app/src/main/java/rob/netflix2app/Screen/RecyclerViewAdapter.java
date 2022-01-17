@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -44,9 +45,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.usernameTextViewItem.setText(mData.get(position).getUsername());
-        holder.tweetTextView.setText(mData.get(position).getTextTweet());
-        holder.img.setImageResource(mData.get(position).getPhote());
+        holder.username_text_view_tweet_item_recycler.setText(mData.get(position).getUsername());
+        holder.tweet_text_view_tweet_item_recycler.setText(mData.get(position).getTextTweet());
+        holder.profile_of_tweet_item_recycler.setImageResource(mData.get(position).getPhote());
     }
 
 
@@ -57,79 +58,113 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, PopupMenu.OnMenuItemClickListener {
 
-        private LinearLayout item_conact;
-        private TextView usernameTextViewItem;
-        private TextView tweetTextView;
-        private ImageView img;
-        ImageView moreOptionImageView;
-        ImageView commentImageView;
-        ImageView retweetImageView;
-        ImageView likeImageView;
-        ImageView shareImageView;
-
-
+        private LinearLayout linear_layout_clickable_in_row_tweet_post;
+        private TextView username_text_view_tweet_item_recycler;
+        private TextView tweet_text_view_tweet_item_recycler;
+        private ImageView profile_of_tweet_item_recycler;
+        private ImageView moreOptionImageView;
+        private ImageView commet_image_view_tweet_item_recycler;
+        private TextView commet_text_view_tweet_item_recycler;
+        private ImageView retweet_image_view_tweet_item_recycler;
+        private TextView retweet_text_view_tweet_item_recycler;
+        private ImageView like_image_view_tweet_item_recycler;
+        private TextView like_text_view_tweet_item_recycler;
+        private ImageView share_image_view_tweet_item_recycler;
+        private int toggleOfLikeImageView = 0;
+        private int toggleOfRetweetImageView = 0;
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            item_conact = itemView.findViewById(R.id.conact_item_id);
-            usernameTextViewItem = itemView.findViewById(R.id.usernameTextViewItem);
-            tweetTextView = itemView.findViewById(R.id.tweetTextView);
-            img = itemView.findViewById(R.id.imag_conact);
+            linear_layout_clickable_in_row_tweet_post = itemView.findViewById(R.id.linear_layout_clickable_in_row_tweet_post);
+            username_text_view_tweet_item_recycler = itemView.findViewById(R.id.username_text_view_tweet_item_recycler);
+            tweet_text_view_tweet_item_recycler = itemView.findViewById(R.id.tweet_text_view_in_item_recycler);
+            profile_of_tweet_item_recycler = itemView.findViewById(R.id.profile_of_tweet_item_recycler);
 
-            moreOptionImageView = itemView.findViewById(R.id.moreOptionImageView);
+            //Initial more optional in item_tweet_recycler, same unfollow block
+            moreOptionImageView = itemView.findViewById(R.id.more_option_image_view_tweet_item_recycler);
             moreOptionImageView.setOnClickListener(this);
 
-            commentImageView = itemView.findViewById(R.id.commentImageView);
-            retweetImageView = itemView.findViewById(R.id.retweetImageView);
-            likeImageView = itemView.findViewById(R.id.likeImageView);
-            shareImageView = itemView.findViewById(R.id.shareImageView);
+            //Initial Like, Comment, retweet, share ImageView in item_tweet_recycler
+            commet_image_view_tweet_item_recycler = itemView.findViewById(R.id.commet_image_view_tweet_item_recycler);
+            retweet_image_view_tweet_item_recycler = itemView.findViewById(R.id.retweet_image_view_tweet_item_recycler);
+            like_image_view_tweet_item_recycler = itemView.findViewById(R.id.like_image_view_tweet_item_recycler);
+            share_image_view_tweet_item_recycler = itemView.findViewById(R.id.share_image_view_tweet_item_recycler);
+            //Initial Text of Like, Comment, Retweet
+            commet_text_view_tweet_item_recycler = itemView.findViewById(R.id.commet_text_view_tweet_item_recycler);
+            retweet_text_view_tweet_item_recycler = itemView.findViewById(R.id.retweet_text_view_tweet_item_recycler);
+            like_text_view_tweet_item_recycler = itemView.findViewById(R.id.like_text_view_tweet_item_recycler);
+            //Initial LinearLayout for see detail of Tweet
 
             commentLikeRetweetShareFunction();
+            linearLayoutClickableInRowTweetPostFunction();
         }
+
+        private void linearLayoutClickableInRowTweetPostFunction() {
+            linear_layout_clickable_in_row_tweet_post.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    recyclerViewClickInterface.onItemLinearLayoutClickInterface();
+                }
+            });
+        }
+
 
         public void commentLikeRetweetShareFunction() {
 
 
-            commentImageView.setOnClickListener(new View.OnClickListener() {
+            commet_image_view_tweet_item_recycler.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(itemView.getContext(), "Hallo1", Toast.LENGTH_SHORT).show();
                     recyclerViewClickInterface.onItemCommentClickInterface(getAdapterPosition());
                 }
             });
 
-            likeImageView.setOnClickListener(new View.OnClickListener() {
+            like_image_view_tweet_item_recycler.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(itemView.getContext(), "Hallo2", Toast.LENGTH_SHORT).show();
+                    if (toggleOfLikeImageView == 0) {
+                        like_image_view_tweet_item_recycler.setImageResource(R.drawable.ic_heart_broken);
+                        like_text_view_tweet_item_recycler.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorOfLikeRed));
+                        toggleOfLikeImageView = 1;
+                    } else if (toggleOfLikeImageView == 1) {
+                        like_image_view_tweet_item_recycler.setImageResource(R.drawable.ic_heart);
+                        like_text_view_tweet_item_recycler.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.black));
+                        toggleOfLikeImageView = 0;
+                    }
                     recyclerViewClickInterface.onItemLikeClickInterface(getAdapterPosition());
                 }
             });
-            retweetImageView.setOnClickListener(new View.OnClickListener() {
+            retweet_image_view_tweet_item_recycler.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(itemView.getContext(), " "+ mData.get(getAdapterPosition()).getTextTweet()
-                            + " : "+ mData.get(getAdapterPosition()).getUsername()+ " : "+ getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(itemView.getContext(), " " + mData.get(getAdapterPosition()).getTextTweet()
+                            + " : " + mData.get(getAdapterPosition()).getUsername() + " : " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
                     recyclerViewClickInterface.onItemRetweetClickInterface(getAdapterPosition());
+                    if (toggleOfRetweetImageView == 0) {
+                        retweet_image_view_tweet_item_recycler.setImageResource(R.drawable.ic_repeat_green);
+                        retweet_text_view_tweet_item_recycler.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorOfRetweetGreen));
+                        toggleOfRetweetImageView = 1;
+                    } else if (toggleOfRetweetImageView == 1) {
+                        retweet_image_view_tweet_item_recycler.setImageResource(R.drawable.ic_repeat);
+                        retweet_text_view_tweet_item_recycler.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.black));
+                        toggleOfRetweetImageView = 0;
+                    }
                 }
             });
-            shareImageView.setOnClickListener(new View.OnClickListener() {
+            share_image_view_tweet_item_recycler.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(itemView.getContext(), "Hallo4 ", Toast.LENGTH_SHORT).show();
-
                     recyclerViewClickInterface.onItemShareClickInterface(getAdapterPosition());
-
                 }
             });
 
         }
 
 
+        //Click function of popup menu in row item
         @Override
         public void onClick(View view) {
-
             showPopupMenu(view);
         }
 
@@ -139,8 +174,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             popupMenu.setOnMenuItemClickListener(this);
             popupMenu.show();
         }
-
-
 
 
         @Override
@@ -169,8 +202,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         }
 
-        private void showToast(String message, String optional){
-            Toast.makeText(itemView.getContext(), message+ optional, Toast.LENGTH_SHORT).show();
+        private void showToast(String message, String optional) {
+            Toast.makeText(itemView.getContext(), message + optional, Toast.LENGTH_SHORT).show();
         }
     }
 

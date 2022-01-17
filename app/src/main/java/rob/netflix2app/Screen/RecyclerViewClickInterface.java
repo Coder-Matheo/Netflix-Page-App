@@ -5,4 +5,5 @@ public interface RecyclerViewClickInterface {
     void onItemShareClickInterface(int position);
     void onItemLikeClickInterface(int position);
     void onItemRetweetClickInterface(int position);
+    void onItemLinearLayoutClickInterface();
 }
