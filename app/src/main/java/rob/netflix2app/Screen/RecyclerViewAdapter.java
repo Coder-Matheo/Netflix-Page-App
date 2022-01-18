@@ -79,7 +79,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             linear_layout_clickable_in_row_tweet_post = itemView.findViewById(R.id.linear_layout_clickable_in_row_tweet_post);
             username_text_view_tweet_item_recycler = itemView.findViewById(R.id.username_text_view_tweet_item_recycler);
             tweet_text_view_tweet_item_recycler = itemView.findViewById(R.id.tweet_text_view_in_item_recycler);
-            profile_of_tweet_item_recycler = itemView.findViewById(R.id.profile_of_tweet_item_recycler);
+            profile_of_tweet_item_recycler = itemView.findViewById(R.id.image_profile_of_tweet_item_recycler);
 
             //Initial more optional in item_tweet_recycler, same unfollow block
             moreOptionImageView = itemView.findViewById(R.id.more_option_image_view_tweet_item_recycler);
@@ -96,6 +96,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             like_text_view_tweet_item_recycler = itemView.findViewById(R.id.like_text_view_tweet_item_recycler);
             //Initial LinearLayout for see detail of Tweet
 
+
             commentLikeRetweetShareFunction();
             linearLayoutClickableInRowTweetPostFunction();
         }
@@ -104,15 +105,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             linear_layout_clickable_in_row_tweet_post.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    recyclerViewClickInterface.onItemLinearLayoutClickInterface();
+                    recyclerViewClickInterface.onItemLinearLayoutClickInterface(getAdapterPosition(),mData.get(getAdapterPosition()).getUsername(),
+                            mData.get(getAdapterPosition()).getTextTweet(), mData.get(getAdapterPosition()).getPhote());
+
+                }
+            });
+
+            profile_of_tweet_item_recycler.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Toast.makeText(itemView.getContext(), "Profile of user in Tweet "+mData.get(getAdapterPosition()).getPhote()
+                             , Toast.LENGTH_SHORT).show();
                 }
             });
         }
 
 
         public void commentLikeRetweetShareFunction() {
-
-
             commet_image_view_tweet_item_recycler.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -138,8 +148,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             retweet_image_view_tweet_item_recycler.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(itemView.getContext(), " " + mData.get(getAdapterPosition()).getTextTweet()
-                            + " : " + mData.get(getAdapterPosition()).getUsername() + " : " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
                     recyclerViewClickInterface.onItemRetweetClickInterface(getAdapterPosition());
                     if (toggleOfRetweetImageView == 0) {
                         retweet_image_view_tweet_item_recycler.setImageResource(R.drawable.ic_repeat_green);

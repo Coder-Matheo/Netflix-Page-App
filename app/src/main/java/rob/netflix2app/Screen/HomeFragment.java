@@ -2,6 +2,7 @@ package rob.netflix2app.Screen;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,8 +90,30 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
     }
 
     @Override
-    public void onItemLinearLayoutClickInterface() {
+    public void onItemLinearLayoutClickInterface(int position, String usernameOfTweet, String textOfTweet, int imageProfileOfUser) {
         commentRetweetLikeShare_class.toastFunction("onItemLinearLayoutClickInterface", getContext());
+        //replace (jump fragment to another Fragment) layout and transfer data to another fragment
+
+
+
+        try {
+            if (!TextUtils.isEmpty(usernameOfTweet) && !TextUtils.isEmpty(textOfTweet)){
+                Bundle dataBundle = new Bundle();
+                dataBundle.putString("usernameOfTweetKey", usernameOfTweet);
+                dataBundle.putString("textOfTweetKey", textOfTweet);
+                dataBundle.putInt("imageProfileOfUser", imageProfileOfUser);
+                ViewDetailTweetPostFragment viewDetailTweetPostFragment = new ViewDetailTweetPostFragment();
+                viewDetailTweetPostFragment.setArguments(dataBundle);
+
+                getParentFragment().getParentFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        viewDetailTweetPostFragment).commit();
+            }
+        }catch (Exception e){
+            commentRetweetLikeShare_class.toastFunction("Tweet isn't Avalible", getActivity().getApplicationContext());
+        }
+
+
+
     }
 
 
@@ -98,7 +121,7 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
     public void onItemLikeClickInterface(int position) {
 
         if (toggleOfLikeImageView == 0) {
-            commentRetweetLikeShare_class.toastFunction("onItemRetweetClickInterface Liked", getContext());
+            commentRetweetLikeShare_class.toastFunction("onItemRetweetClickInterface Liked : "+ position, getContext());
 
             //(int bioId, String messagePost, Integer like)
             PostObj postObj = new PostObj(1);
@@ -106,7 +129,7 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
             insertPostAsyncTask.execute(postObj);
             toggleOfLikeImageView = 1;
         } else if (toggleOfLikeImageView == 1) {
-            commentRetweetLikeShare_class.toastFunction("onItemRetweetClickInterface Unliked", getContext());
+            commentRetweetLikeShare_class.toastFunction("onItemRetweetClickInterface Unliked : "+ position, getContext());
             toggleOfLikeImageView = 0;
         }
 
