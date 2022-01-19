@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
     tools:context=".Screen.ViewDetailTweetPostFragment">
 
 
-
     <LinearLayout
+        android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -27,7 +30,8 @@
                 android:id="@+id/backspace_button_in_image_view_of_detail_tweet_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_backspace"/>
+                android:src="@drawable/ic_backspace" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,23 +39,26 @@
                 android:text="Tweet"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                 />
+                android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
     </LinearLayout>
 
 
     <LinearLayout
+        android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="15dp"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
         <LinearLayout
 
+            android:id="@+id/linear_layout_header_of_detail_tweet_item"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/linear_layout_header_of_detail_tweet_item">
+            android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="60dp"
@@ -149,15 +156,14 @@
                     android:id="@+id/retweet_text_view_of_detail_tweet_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"
+                    android:paddingRight="5dp"
 
-                    android:paddingRight="5dp"/>
+                    android:text="1" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Retweets"
-                    />
+                    android:text="Retweets" />
             </LinearLayout>
 
             <LinearLayout
@@ -168,15 +174,14 @@
                     android:id="@+id/like_text_view_of_detail_tweet_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="88"
+                    android:paddingRight="5dp"
 
-                    android:paddingRight="5dp"/>
+                    android:text="88" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Likes"
-                    />
+                    android:text="Likes" />
             </LinearLayout>
 
         </LinearLayout>
@@ -242,6 +247,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
+
                     <ImageView
                         android:id="@+id/share_image_view_of_detail_tweet_item"
                         android:layout_width="15dp"
@@ -252,7 +258,46 @@
 
             </LinearLayout>
         </RelativeLayout>
+
+
+
+
+        <LinearLayout
+            android:id="@+id/deynamic_linear_layout_write_detail_tweet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+
     </LinearLayout>
 
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/mention_edit_text_in_detail_tweet"
+            android:layout_width="310dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="40dp"
+            android:gravity="bottom"
+            android:hint="Input"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/button_mention_edit_text_in_detail_tweet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Press" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

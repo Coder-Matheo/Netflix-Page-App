@@ -1,18 +1,27 @@
 package rob.netflix2app.Screen;
 
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,8 +44,12 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
     DatabaseViewModel databaseViewModel;
     CommentRetweetLikeShare_Class commentRetweetLikeShare_class;
     LinearLayout linear_layout_clickable_tweet_post;
-    
+    NavController navControllerHome;
+
+    //initial Variable
     int toggleOfLikeImageView = 0;
+
+    MenuItem fav;
 
 
     @Override
@@ -54,6 +67,12 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
         return view;
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

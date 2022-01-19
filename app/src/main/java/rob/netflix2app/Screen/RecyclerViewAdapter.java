@@ -1,7 +1,13 @@
 package rob.netflix2app.Screen;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -24,6 +31,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     List<TwitOfHome> mData;
     private static final String TAG = RecyclerViewAdapter.class.getSimpleName();
     RecyclerViewClickInterface recyclerViewClickInterface;
+
+
+    //public boolean onCreateOptionsMenu(Menu menu) {
+
+
 
 
     public RecyclerViewAdapter(Context mConact, List<TwitOfHome> mData, RecyclerViewClickInterface recyclerViewClickInterface1) {
@@ -179,9 +191,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private void showPopupMenu(View view) {
             PopupMenu popupMenu = new PopupMenu(view.getContext(), view);
             popupMenu.inflate(R.menu.popup_menu_item_recyclerview);
+            //Call override OnMenuItemClick
             popupMenu.setOnMenuItemClickListener(this);
+
             popupMenu.show();
         }
+
 
 
         @Override
@@ -210,10 +225,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         }
 
+
+
         private void showToast(String message, String optional) {
             Toast.makeText(itemView.getContext(), message + optional, Toast.LENGTH_SHORT).show();
         }
+
+
+
     }
+
 
 
 }

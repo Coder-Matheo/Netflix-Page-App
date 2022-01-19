@@ -8,6 +8,7 @@
         <entry key="..\:/NewAndroidCourse/Netflix2App/app/src/main/res/layout/fragment_login.xml" value="0.264" />
         <entry key="..\:/NewAndroidCourse/Netflix2App/app/src/main/res/layout/fragment_show_video.xml" value="0.17046605876393112" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.35208333333333336" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/border_of_mention_of_detail_tweet.xml" value="0.271875" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/color_test.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/custom_bottom_navigation_shape.xml" value="0.35208333333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/drawable/custom_thumb_costomize_shape.xml" value="0.23697916666666666" />
@@ -79,7 +80,7 @@
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_register.xml" value="0.264" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_search.xml" value="0.3197463768115942" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_view_detail_tweet.xml" value="0.23802083333333332" />
-        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_view_detail_tweet_post.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_view_detail_tweet_post.xml" value="0.264" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/item_contact.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/item_tweet_recycler.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/nav_header.xml" value="0.3138586956521739" />
@@ -87,6 +88,7 @@
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/nav_header_screen_drawer.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/row_add_cricketer.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/row_item_dynamic_image_tweet.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/row_layout_mention_of_tweet.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/menu/drawer_menu.xml" value="0.29259259259259257" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/menu/drawer_menu2.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/menu/drawer_menu_screen.xml" value="0.33177083333333335" />
