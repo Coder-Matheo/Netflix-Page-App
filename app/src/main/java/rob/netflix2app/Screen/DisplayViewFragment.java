@@ -1,6 +1,5 @@
 package rob.netflix2app.Screen;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,42 +16,30 @@ import rob.netflix2app.R;
 
 public class DisplayViewFragment extends Fragment {
 
-    private TabLayout tabLayout;
-    private ViewPagerAdapter viewPagerAdapter;
-    private ViewPager viewPager;
+    private TabLayout tab_layout_display_view;
+    private ViewPagerAdapter view_pager_display_Adapter;
+    private ViewPager view_pager_display_view;
 
-    public DisplayViewFragment() {
-        // Required empty public constructor
-    }
-
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_display_view, container, false);
-        tabLayout = view.findViewById(R.id.tab_layout);
-        viewPager = view.findViewById(R.id.view_pager);
-        viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
+        tab_layout_display_view = view.findViewById(R.id.tab_layout_display_view);
+        view_pager_display_view = view.findViewById(R.id.view_pager_display_view);
+        view_pager_display_Adapter = new ViewPagerAdapter(getChildFragmentManager());
         //getSupportFragmentManager
         //Add Fragment Here
-        viewPagerAdapter.AddFragment(new HomeFragment(),getString(R.string.home_tab_text));
-        viewPagerAdapter.AddFragment(new ProfileFragment(),"Call");
+        view_pager_display_Adapter.AddFragment(new HomeFragment(),getString(R.string.home_tab_text));
+        view_pager_display_Adapter.AddFragment(new NotificationsFragment(),"Call");
 
 
-        viewPager.setAdapter(viewPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+        view_pager_display_view.setAdapter(view_pager_display_Adapter);
+        tab_layout_display_view.setupWithViewPager(view_pager_display_view);
 
-        tabLayout.getTabAt(0).setIcon(R.drawable.ic_bolt);
-        tabLayout.getTabAt(1).setIcon(R.drawable.ic_article);
+        //tab_layout_display_view.getTabAt(0).setIcon(R.drawable.ic_bolt);
+        //tab_layout_display_view.getTabAt(1).setIcon(R.drawable.ic_article);
 
 
 

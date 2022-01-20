@@ -30,7 +30,7 @@ public class NavigationDrawerMainActivity extends AppCompatActivity implements N
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     BottomNavigationView bottomNavigationView;
-    NavController navController;
+
 
 
     @Override

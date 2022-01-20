@@ -18,10 +18,12 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import rob.netflix2app.R;
 
 
-public class ViewDetailTweetPostFragment extends Fragment {
+public class ViewDetailTweetPostFragment extends Fragment{
 
 
     private static final String TAG = ViewDetailTweetPostFragment.class.getSimpleName();
@@ -121,9 +123,6 @@ public class ViewDetailTweetPostFragment extends Fragment {
         });
     }
 
-
-
-
     private void addMentionDynamicLayout() {
         View row_layout_mention_of_tweet_view = getLayoutInflater().inflate(R.layout.row_layout_mention_of_tweet, null, false);
         TextView row_text_view_mention_of_tweet = row_layout_mention_of_tweet_view.findViewById(R.id.row_text_view_mention_of_tweet);
@@ -135,8 +134,5 @@ public class ViewDetailTweetPostFragment extends Fragment {
         } else {
             Toast.makeText(getActivity().getApplicationContext(), "Please write something", Toast.LENGTH_SHORT).show();
         }
-
     }
-
-
 }
