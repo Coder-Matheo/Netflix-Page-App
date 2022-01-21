@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import rob.netflix2app.R;
 
 
@@ -19,6 +22,11 @@ public class DisplayViewFragment extends Fragment {
     private TabLayout tab_layout_display_view;
     private ViewPagerAdapter view_pager_display_Adapter;
     private ViewPager view_pager_display_view;
+
+    List<TwitOfHome> lstTweet;
+    List<TwitOfHome> lstTweetlike;
+
+
 
 
     @Override
@@ -31,8 +39,21 @@ public class DisplayViewFragment extends Fragment {
         view_pager_display_Adapter = new ViewPagerAdapter(getChildFragmentManager());
         //getSupportFragmentManager
         //Add Fragment Here
-        view_pager_display_Adapter.AddFragment(new HomeFragment(),getString(R.string.home_tab_text));
-        view_pager_display_Adapter.AddFragment(new NotificationsFragment(),"Call");
+        lstTweet = new ArrayList<>();
+        lstTweet.add(new TwitOfHome("Mario ", "Hallo guys, Today weather were so cold, if you like come to enjoy", R.drawable.fran1));
+        lstTweet.add(new TwitOfHome("Matt Bro", "Hi Bro, we go tomorrow to football", R.drawable.fran2));
+        lstTweet.add(new TwitOfHome("Sherry lovely", "Man, let's going Party", R.drawable.fran3));
+        lstTweet.add(new TwitOfHome("New York Visit", "My Love, Now in New York", R.drawable.fran4));
+
+        lstTweetlike = new ArrayList<>();
+        lstTweetlike.add(new TwitOfHome("Matthew ", "Hallo guys, Today weather were so cold, if you like come to enjoy", R.drawable.fran1));
+        lstTweetlike.add(new TwitOfHome("Matthew", "Hi Bro, we go tomorrow to football", R.drawable.fran2));
+        lstTweetlike.add(new TwitOfHome("Matthew", "Man, let's going Party", R.drawable.fran3));
+        lstTweetlike.add(new TwitOfHome("Matthew", "My Love, Now in New York", R.drawable.fran4));
+
+
+        view_pager_display_Adapter.AddFragment(new HomeFragment(lstTweet),getString(R.string.home_tab_text));
+        view_pager_display_Adapter.AddFragment(new HomeFragment(lstTweetlike),"Call");
 
 
         view_pager_display_view.setAdapter(view_pager_display_Adapter);

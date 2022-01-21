@@ -24,6 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
+
     <com.getbase.floatingactionbutton.FloatingActionButton
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,5 +33,11 @@
         android:layout_marginBottom="40dp"
         app:fab_colorNormal="@color/colorOfNextCustomizeButton"
         app:fab_icon="@drawable/ic_add" />
+
+
+    <include layout="@layout/button_include"
+        android:layout_gravity="bottom|right"
+        android:layout_height="100dp"
+        android:layout_width="200dp"/>
 
 </FrameLayout>

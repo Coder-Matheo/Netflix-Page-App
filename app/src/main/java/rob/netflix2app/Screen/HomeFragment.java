@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,6 +20,8 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,15 +37,21 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
     private static final String TAG = HomeFragment.class.getSimpleName();
     View view;
     RecyclerView recyclerViewHome;
-    List<TwitOfHome> lstTweet;
+    List<TwitOfHome> lstTweet = new ArrayList<>();
     RecyclerViewAdapter recyclerViewAdapterHome;
     DatabaseViewModel databaseViewModel;
     CommentRetweetLikeShare_Class commentRetweetLikeShare_class;
     LinearLayout linear_layout_clickable_tweet_post;
     NavController navControllerHome;
+    Button floating_button_include;
 
     //initial Variable
     int toggleOfLikeImageView = 0;
+
+    public HomeFragment(List<TwitOfHome> lstTweet_) {
+        this.lstTweet = lstTweet_;
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,23 +75,20 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-
-        lstTweet = new ArrayList<>();
-        lstTweet.add(new TwitOfHome("Mario ", "Hallo guys, Today weather were so cold, if you like come to enjoy", R.drawable.fran1));
-        lstTweet.add(new TwitOfHome("Matt Bro", "Hi Bro, we go tomorrow to football", R.drawable.fran2));
-        lstTweet.add(new TwitOfHome("Sherry lovely", "Man, let's going Party", R.drawable.fran3));
-        lstTweet.add(new TwitOfHome("New York Visit", "My Love, Now in New York", R.drawable.fran4));
-    }
 
     private void initialRecycler(View view) {
         recyclerViewHome = view.findViewById(R.id.recyclerViewHome);
-        recyclerViewAdapterHome = new RecyclerViewAdapter(getContext(), lstTweet, this);
+        recyclerViewAdapterHome = new RecyclerViewAdapter(getContext(), this.lstTweet, this);
         recyclerViewHome.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewHome.setAdapter(recyclerViewAdapterHome);
+        floating_button_include = view.findViewById(R.id.button_include_id);
+        floating_button_include.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), "include Button", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         linear_layout_clickable_tweet_post = view.findViewById(R.id.linear_layout_clickable_in_row_tweet_post);
     }
