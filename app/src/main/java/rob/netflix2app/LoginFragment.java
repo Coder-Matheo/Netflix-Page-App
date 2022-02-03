@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -42,9 +43,9 @@ import rob.netflix2app.Screen.NavigationDrawerMainActivity;
 
 public class LoginFragment extends Fragment {
 
-    private AutoCompleteTextView emailEditText;
+    private EditText emailEditText;
     private EditText passwordEditText;
-    private ImageButton loginButton;
+    private Button loginButton;
     private TextView registerTextView;
     DatabaseViewModel databaseViewModel;
     NavController navController;
@@ -95,13 +96,7 @@ public class LoginFragment extends Fragment {
 
     private void emailCheckAutoCompleteTextView(LoginFragment loginFragment) {
 
-        String[] COUNTRIES = new String[]{
-                "Belgium", "France", "Italy", "Germany", "Spain"
-        };
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(loginFragment.getContext(), android.R.layout.simple_dropdown_item_1line, COUNTRIES);
-        emailEditText.setAdapter(adapter);
-        emailEditText.setThreshold(1);
 
         emailEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -247,4 +242,7 @@ public class LoginFragment extends Fragment {
         });
 
     }
+
+
+
 }

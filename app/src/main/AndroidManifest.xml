@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Netflix2App">
+        <!--android:windowSoftInputMode="adjustPan" hiding Bottom NavigationBar whilst keyboard is present-->
         <activity
             android:name=".Screen.NavigationDrawerMainActivity"
             android:exported="false"
-            android:theme="@style/ThemeOfScreenToolbar" />
+            android:theme="@style/ThemeOfScreenToolbar"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

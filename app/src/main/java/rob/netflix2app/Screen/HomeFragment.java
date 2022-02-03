@@ -1,5 +1,6 @@
 package rob.netflix2app.Screen;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,6 +22,7 @@ import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -43,7 +45,8 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
     CommentRetweetLikeShare_Class commentRetweetLikeShare_class;
     LinearLayout linear_layout_clickable_tweet_post;
     NavController navControllerHome;
-    Button floating_button_include;
+    Button button_include;
+    BottomSheetDialog bottomSheetDialogWriteTweet;
 
     //initial Variable
     int toggleOfLikeImageView = 0;
@@ -82,11 +85,26 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
         recyclerViewAdapterHome = new RecyclerViewAdapter(getContext(), this.lstTweet, this);
         recyclerViewHome.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewHome.setAdapter(recyclerViewAdapterHome);
-        floating_button_include = view.findViewById(R.id.button_include_id);
-        floating_button_include.setOnClickListener(new View.OnClickListener() {
+        button_include = view.findViewById(R.id.button_flaot_id);
+
+        button_include.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "include Button", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(view.getContext(), "include Button", Toast.LENGTH_SHORT).show();
+
+                //startActivity(new Intent(view.getContext(), WriteLoadImageTweet_Fragment.class));
+
+                getParentFragment().getParentFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new WriteLoadImageTweet_Fragment()).commit();
+
+
+                bottomSheetDialogWriteTweet = new BottomSheetDialog(view.getContext());
+                bottomSheetDialogWriteTweet.setContentView(R.layout.bottom_sheet_dialog_write_tweet);
+                bottomSheetDialogWriteTweet.setCanceledOnTouchOutside(false);
+
+                //bottomSheetDialogWriteTweet.show();
+
+
             }
         });
 

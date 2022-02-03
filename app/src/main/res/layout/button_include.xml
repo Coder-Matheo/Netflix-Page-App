@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/button_include_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#1A4282"
-        android:text="Press"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:textColor="#D63D3D" />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:cardCornerRadius="30dp"
+        >
+        <Button
+            android:id="@+id/button_flaot_id"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@color/colorOfNextCustomizeButton"
+            android:textStyle="bold"
+            android:textSize="30dp" />
+
+    </androidx.cardview.widget.CardView>
+
+
+
 </LinearLayout>

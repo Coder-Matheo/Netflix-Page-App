@@ -18,8 +18,6 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import rob.netflix2app.R;
 
 
@@ -65,7 +63,7 @@ public class ViewDetailTweetPostFragment extends Fragment{
         backspace_button_in_image_view_of_detail_tweet_item = view.findViewById(R.id.backspace_button_in_image_view_of_detail_tweet_item);
 
 
-        dynamic_linear_layout_write_detail_tweet = view.findViewById(R.id.deynamic_linear_layout_write_detail_tweet);
+        dynamic_linear_layout_write_detail_tweet = view.findViewById(R.id.dynamic_linear_layout_write_detail_tweet);
         button_mention_edit_text_in_detail_tweet = view.findViewById(R.id.button_mention_edit_text_in_detail_tweet);
         mention_edit_text_in_detail_tweet = view.findViewById(R.id.mention_edit_text_in_detail_tweet);
 

@@ -265,7 +265,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/deynamic_linear_layout_write_detail_tweet"
+                android:id="@+id/dynamic_linear_layout_write_detail_tweet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
