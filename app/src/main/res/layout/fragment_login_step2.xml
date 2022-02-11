@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginFragment">
+    tools:context=".LoginStep1Fragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,6 +52,7 @@
             android:id="@+id/imageView3"
             android:layout_width="401dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,25 +62,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
-                android:text="To get started, first enter your \n phone, email, or @username"
+                android:text="@string/title_text_step2_login"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
+
         <LinearLayout
             android:id="@+id/linearLayout3"
-            android:layout_width="match_parent"
+            android:layout_width="411dp"
             android:layout_height="wrap_content"
-            android:alpha="1"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.135">
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.036">
 
 
             <EditText
@@ -93,11 +93,50 @@
                 android:inputType="textEmailAddress"
                 android:paddingStart="10dp"
                 android:textColor="@color/black"
-                android:textColorHint="#363636"
+                android:textColorHint="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal" />
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="340dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:drawableLeft="@drawable/ic_lock"
+                android:hint="Password"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/transparent"
+                app:hintTextColor="@android:color/transparent"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white">
 
+                <EditText
+                    android:id="@+id/passwordEditText"
+                    android:layout_width="340dp"
+                    android:layout_height="40dp"
+                    android:background="@null"
+                    android:hint="password"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#363636"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            tools:ignore="MissingConstraints">
 
             <TextView
                 android:id="@+id/registerPageTextView"
@@ -110,58 +149,18 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-
-
         </LinearLayout>
 
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-            tools:ignore="MissingConstraints">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="300dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:drawableLeft="@drawable/ic_lock"
-                android:hint="@string/password_string"
-                android:textColorHint="@color/white"
-                android:textStyle="bold"
-                app:hintTextColor="@color/white"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/white">
-
-                <EditText
-                    android:id="@+id/passwordEditText"
-                    android:layout_width="300dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/round_item"
-                    android:ems="10"
-                    android:inputType="numberPassword"
-                    android:paddingStart="20dp"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="20dp"
             app:layout_constraintStart_toStartOf="parent">
 
             <Button
@@ -170,19 +169,20 @@
                 android:layout_height="36dp"
                 android:layout_gravity="bottom"
 
-                android:background="@drawable/next_button_customize_shape"
+                android:background="@drawable/disable_button_twitter"
                 android:text="Next"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:layout_editor_absoluteX="0dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:layout_gravity="center"
-                android:text="Forget Password ?"/>
+                android:text="Forget Password ?"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

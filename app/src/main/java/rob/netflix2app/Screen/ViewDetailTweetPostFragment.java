@@ -67,6 +67,8 @@ public class ViewDetailTweetPostFragment extends Fragment{
         button_mention_edit_text_in_detail_tweet = view.findViewById(R.id.button_mention_edit_text_in_detail_tweet);
         mention_edit_text_in_detail_tweet = view.findViewById(R.id.mention_edit_text_in_detail_tweet);
 
+
+
         backspaceButtonInImageViewOfDetailTweetItemFunction();
         moreOptionImageViewOfDetailTweetItemFunction(view);
 

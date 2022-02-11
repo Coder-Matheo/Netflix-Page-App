@@ -100,7 +100,7 @@
         android:layout_height="36dp"
         android:layout_gravity="bottom|center"
         android:layout_margin="16dp"
-        android:background="@drawable/next_button_customize_shape"
+        android:background="@drawable/enable_button_twitter"
         android:text="@string/next"
         android:textColor="@color/next_text_button_customize_shape"
         android:textStyle="bold" />

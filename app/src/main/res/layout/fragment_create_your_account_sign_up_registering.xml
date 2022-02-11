@@ -91,7 +91,7 @@
         android:layout_height="36dp"
         android:layout_gravity="bottom"
         android:layout_margin="16dp"
-        android:background="@drawable/next_button_customize_shape"
+        android:background="@drawable/enable_button_twitter"
         android:text="@string/sign_up"
         android:textColor="@color/next_text_button_customize_shape"
         android:textStyle="bold" />

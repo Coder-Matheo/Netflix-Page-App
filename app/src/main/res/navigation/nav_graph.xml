@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/loginStep1Fragment">
 
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="rob.netflix2app.LoginFragment"
+        android:id="@+id/loginStep1Fragment"
+        android:name="rob.netflix2app.LoginStep1Fragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login">
+        tools:layout="@layout/fragment_login_step1">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
@@ -25,7 +25,7 @@
             app:destination="@id/customizeYourAccountRegistering" />
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginStep1Fragment" />
     </fragment>
     <fragment
         android:id="@+id/customizeYourAccountRegistering"

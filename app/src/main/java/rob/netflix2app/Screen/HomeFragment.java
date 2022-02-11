@@ -1,6 +1,5 @@
 package rob.netflix2app.Screen;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,9 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -45,7 +42,7 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
     CommentRetweetLikeShare_Class commentRetweetLikeShare_class;
     LinearLayout linear_layout_clickable_tweet_post;
     NavController navControllerHome;
-    Button button_include;
+    FloatingActionButton button_include;
     BottomSheetDialog bottomSheetDialogWriteTweet;
 
     //initial Variable
@@ -85,7 +82,7 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
         recyclerViewAdapterHome = new RecyclerViewAdapter(getContext(), this.lstTweet, this);
         recyclerViewHome.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewHome.setAdapter(recyclerViewAdapterHome);
-        button_include = view.findViewById(R.id.button_flaot_id);
+        button_include = view.findViewById(R.id.floating_action_id);
 
         button_include.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,7 +178,7 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
                 .databasePost_dao()
                 .getAllTweetPost();
 
-        tweetPostList.observe(HomeFragment.this, new Observer<List<PostObj>>() {
+        tweetPostList.observe(getViewLifecycleOwner(), new Observer<List<PostObj>>() {
             @Override
             public void onChanged(List<PostObj> postObjs) {
                 if (postObjs != null) {

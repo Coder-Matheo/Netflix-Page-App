@@ -9,17 +9,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -41,7 +39,7 @@ import rob.netflix2app.RoomDatabase.MySingleton_Bio_DB;
 import rob.netflix2app.Screen.NavigationDrawerMainActivity;
 
 
-public class LoginFragment extends Fragment {
+public class LoginStep2Fragment extends Fragment {
 
     private EditText emailEditText;
     private EditText passwordEditText;
@@ -52,12 +50,12 @@ public class LoginFragment extends Fragment {
 
 
 
-    private static final String TAG = LoginFragment.class.getSimpleName();
+    private static final String TAG = LoginStep2Fragment.class.getSimpleName();
     TextView  newAccountTextView;
-    LinearLayout linearLayout3,linearLayout4;
+    LinearLayout linearLayout3, linearLayout4;
 
 
-    public LoginFragment() {
+    public LoginStep2Fragment() {
         // Required empty public constructor
     }
 
@@ -73,7 +71,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
+        View view = inflater.inflate(R.layout.fragment_login_step2, container, false);
         // Inflate the layout for this fragment
 
         Intent intentToScreenActivity = new Intent(getActivity(), NavigationDrawerMainActivity.class);
@@ -94,8 +92,7 @@ public class LoginFragment extends Fragment {
 
     }
 
-    private void emailCheckAutoCompleteTextView(LoginFragment loginFragment) {
-
+    private void emailCheckAutoCompleteTextView(LoginStep2Fragment loginFragment) {
 
 
         emailEditText.addTextChangedListener(new TextWatcher() {
@@ -107,23 +104,32 @@ public class LoginFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 boolean boolEmailValidation = emailValidation( charSequence);
-                if (boolEmailValidation){
-                    loginButton.setEnabled(true);
-                }else {
-                    loginButton.setEnabled(false);
 
+
+                if (boolEmailValidation){
+                    //loginButton.setEnabled(true);
+                }else {
+                    //loginButton.setEnabled(false);
+                }
+
+                if (charSequence.length() == 0){
+                    loginButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.disable_button_twitter));
+                }
+                if (charSequence.length() >= 1){
+                    loginButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.enable_button_twitter));
                 }
 
                 loginButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        Toast.makeText(getContext(), "Test of Login", Toast.LENGTH_SHORT).show();
                         //check database, if username and password exists, then return the value.
                         //if return Value Password and Username, leap to ScreenActivity
                         LiveData<BioObj> userFind = MySingleton_Bio_DB.getInstance(getContext())
                                 .databaseBio_dao()
                                 .findUserByNamePass(emailEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
 
-                        userFind.observe(LoginFragment.this, new Observer<BioObj>() {
+                        userFind.observe(getViewLifecycleOwner(), new Observer<BioObj>() {
                             @Override
                             public void onChanged(BioObj bioObj) {
                                 //verification, if user have a Account(Save in Database Bio), invoke the SnackBar
@@ -161,7 +167,7 @@ public class LoginFragment extends Fragment {
                 .databaseBio_dao()
                 .getAllUsers();
 
-        userList.observe(LoginFragment.this, new Observer<List<BioObj>>() {
+        userList.observe(LoginStep2Fragment.this, new Observer<List<BioObj>>() {
             @Override
             public void onChanged(List<BioObj> bioObjs) {
                 if (bioObjs != null){
@@ -181,7 +187,7 @@ public class LoginFragment extends Fragment {
                 .databaseBio_dao()
                 .findUserByNamePass(emailEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
 
-        userFind.observe(LoginFragment.this, new Observer<BioObj>() {
+        userFind.observe(LoginStep2Fragment.this, new Observer<BioObj>() {
             @Override
             public void onChanged(BioObj bioObj) {
                 if (bioObj != null){

@@ -6,13 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,7 +22,7 @@ import com.google.android.material.navigation.NavigationView;
 import rob.netflix2app.R;
 import rob.netflix2app.SearchFragment;
 
-public class NavigationDrawerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class NavigationDrawerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = NavigationDrawerMainActivity.class.getSimpleName();
     DrawerLayout drawerLayout;
@@ -32,20 +30,18 @@ public class NavigationDrawerMainActivity extends AppCompatActivity implements N
     BottomNavigationView bottomNavigationView;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_naviagtion_drawer);
-
+        setContentView(R.layout.activity_navigation_drawer);
 
 
 
         initDrawerAndToolbar();
 
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DisplayViewFragment()).commit();
-             navigationView.setCheckedItem(R.id.nav_profile_drawer);
+            navigationView.setCheckedItem(R.id.nav_profile_drawer);
 
         }
 
@@ -59,7 +55,7 @@ public class NavigationDrawerMainActivity extends AppCompatActivity implements N
 
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view_drawer);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
@@ -69,12 +65,12 @@ public class NavigationDrawerMainActivity extends AppCompatActivity implements N
         toggle.syncState();
 
 
+
         //Resize photo
         Drawable dr = getResources().getDrawable(R.drawable.avatar_photo);
         Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
         Drawable d2 = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, 40, 40, true));
         toolbar.setNavigationIcon(d2);
-
 
 
         View header = navigationView.getHeaderView(0);
@@ -90,9 +86,6 @@ public class NavigationDrawerMainActivity extends AppCompatActivity implements N
         });
 
 
-
-
-
     }
 
     private void initBottomNavigationBarFunction() {
@@ -101,7 +94,7 @@ public class NavigationDrawerMainActivity extends AppCompatActivity implements N
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.home_nav_bottom:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new DisplayViewFragment()).commit();
@@ -130,9 +123,9 @@ public class NavigationDrawerMainActivity extends AppCompatActivity implements N
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else {
+        } else {
             super.onBackPressed();
         }
 
@@ -140,7 +133,7 @@ public class NavigationDrawerMainActivity extends AppCompatActivity implements N
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_profile_drawer:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ProfileFragment()).commit();

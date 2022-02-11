@@ -9,6 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -27,6 +28,7 @@ public class ProfileFragment extends Fragment {
     List<TwitOfHome> lstTweetReplied;
     List<TwitOfHome> lstTweetMedia;
     List<TwitOfHome> lstTweetTweets;
+
 
 
     @Override

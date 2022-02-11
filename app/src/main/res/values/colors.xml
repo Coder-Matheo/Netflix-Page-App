@@ -18,5 +18,7 @@
     <color name="background_color_nav_header">#ffffff</color>
     <color name="colorOfRetweetGreen">#25BA00</color>
     <color name="colorOfLikeRed">#FF0000</color>
+    <color name="disabled_button_color_twitter">#005777</color>
+    <color name="disable_color">#005777</color>
 
 </resources>
