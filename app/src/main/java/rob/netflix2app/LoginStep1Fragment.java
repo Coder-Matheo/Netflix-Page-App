@@ -122,9 +122,12 @@ public class LoginStep1Fragment extends Fragment {
                 loginButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getContext(), "Test of Login", Toast.LENGTH_SHORT).show();
+
+                        Bundle mDataBundle = new Bundle();
+                        mDataBundle.putString("usernameOrEmail", emailEditText.getText().toString().trim());
 
                         LoginStep2Fragment loginStep2Fragment = new LoginStep2Fragment();
+                        loginStep2Fragment.setArguments(mDataBundle);
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, loginStep2Fragment).commit();
 
 

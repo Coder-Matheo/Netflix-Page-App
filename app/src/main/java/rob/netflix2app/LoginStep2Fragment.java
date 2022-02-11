@@ -41,10 +41,10 @@ import rob.netflix2app.Screen.NavigationDrawerMainActivity;
 
 public class LoginStep2Fragment extends Fragment {
 
-    private EditText emailEditText;
-    private EditText passwordEditText;
-    private Button loginButton;
-    private TextView registerTextView;
+    private EditText emailStep2EditText;
+    private EditText passwordStep2EditText;
+    private Button loginStep2Button;
+    private TextView registerPageStep2TextView;
     DatabaseViewModel databaseViewModel;
     NavController navController;
 
@@ -86,16 +86,20 @@ public class LoginStep2Fragment extends Fragment {
 
 
     private void initialization(View view) {
-        emailEditText = view.findViewById(R.id.emailEditText);
-        passwordEditText = view.findViewById(R.id.passwordEditText);
-        loginButton = view.findViewById(R.id.login_btn);
+        emailStep2EditText = view.findViewById(R.id.emailStep2EditText);
+        passwordStep2EditText = view.findViewById(R.id.passwordStep2EditText);
+        loginStep2Button = view.findViewById(R.id.loginStep2Button);
+
+        String usernameOrEmail = getArguments().getString("usernameOrEmail");
+        emailStep2EditText.setText(usernameOrEmail);
+        passwordStep2EditText.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
 
     }
 
     private void emailCheckAutoCompleteTextView(LoginStep2Fragment loginFragment) {
 
 
-        emailEditText.addTextChangedListener(new TextWatcher() {
+        passwordStep2EditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -105,7 +109,6 @@ public class LoginStep2Fragment extends Fragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 boolean boolEmailValidation = emailValidation( charSequence);
 
-
                 if (boolEmailValidation){
                     //loginButton.setEnabled(true);
                 }else {
@@ -113,21 +116,22 @@ public class LoginStep2Fragment extends Fragment {
                 }
 
                 if (charSequence.length() == 0){
-                    loginButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.disable_button_twitter));
+                    loginStep2Button.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.disable_button_twitter));
                 }
                 if (charSequence.length() >= 1){
-                    loginButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.enable_button_twitter));
+                    loginStep2Button.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.enable_button_twitter));
                 }
 
-                loginButton.setOnClickListener(new View.OnClickListener() {
+                loginStep2Button.setOnClickListener(new View.OnClickListener() {
+
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getContext(), "Test of Login", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Test of clicked", Toast.LENGTH_SHORT).show();
                         //check database, if username and password exists, then return the value.
                         //if return Value Password and Username, leap to ScreenActivity
                         LiveData<BioObj> userFind = MySingleton_Bio_DB.getInstance(getContext())
                                 .databaseBio_dao()
-                                .findUserByNamePass(emailEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
+                                .findUserByNamePass(emailStep2EditText.getText().toString().trim(), passwordStep2EditText.getText().toString().trim());
 
                         userFind.observe(getViewLifecycleOwner(), new Observer<BioObj>() {
                             @Override
@@ -185,7 +189,7 @@ public class LoginStep2Fragment extends Fragment {
 
         LiveData<BioObj> userFind = MySingleton_Bio_DB.getInstance(getContext())
                 .databaseBio_dao()
-                .findUserByNamePass(emailEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
+                .findUserByNamePass(emailStep2EditText.getText().toString().trim(), passwordStep2EditText.getText().toString().trim());
 
         userFind.observe(LoginStep2Fragment.this, new Observer<BioObj>() {
             @Override
@@ -217,8 +221,8 @@ public class LoginStep2Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         navController = Navigation.findNavController(view);
-        registerTextView = view.findViewById(R.id.registerPageTextView);
-        registerTextView.setOnClickListener(new View.OnClickListener() {
+        registerPageStep2TextView = view.findViewById(R.id.registerPageStep2TextView);
+        registerPageStep2TextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.action_loginFragment_to_registerFragment);

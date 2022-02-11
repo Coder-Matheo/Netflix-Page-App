@@ -36,5 +36,6 @@
     <string name="bio_graph_text_profile">Bio graph</string>
     <string name="title_text_step1_login">To get started, first enter your \n phone, email, or @username</string>
     <string name="title_text_step2_login">Enter your password</string>
+    <string name="title_text_register_step1">Create your account</string>
 
 </resources>

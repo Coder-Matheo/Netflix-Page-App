@@ -83,7 +83,7 @@
 
 
             <EditText
-                android:id="@+id/emailEditText"
+                android:id="@+id/emailStep2EditText"
                 android:layout_width="340dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -94,7 +94,7 @@
                 android:paddingStart="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="normal" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -104,24 +104,24 @@
                 android:background="@android:color/transparent"
                 android:drawableLeft="@drawable/ic_lock"
                 android:hint="Password"
-                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textColorHint="@android:color/transparent"
+                android:textStyle="bold"
                 app:hintTextColor="@android:color/transparent"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/white">
 
                 <EditText
-                    android:id="@+id/passwordEditText"
+                    android:id="@+id/passwordStep2EditText"
                     android:layout_width="340dp"
                     android:layout_height="40dp"
                     android:background="@null"
                     android:hint="password"
-                    android:inputType="textEmailAddress"
+                    android:inputType="numberPassword"
                     android:paddingStart="10dp"
                     android:textColor="@color/black"
                     android:textColorHint="#363636"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="normal" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -132,17 +132,20 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="259dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints">
 
             <TextView
-                android:id="@+id/registerPageTextView"
+                android:id="@+id/registerPageStep2TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
+                android:background="@color/black"
+                android:backgroundTint="@color/colorOfRetweetGreen"
                 android:fontFamily="sans-serif-medium"
                 android:text="Haven't Account?"
                 android:textAppearance="@style/TextAppearance.AppCompat.Button"
@@ -152,6 +155,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -164,11 +168,10 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <Button
-                android:id="@+id/login_btn"
+                android:id="@+id/loginStep2Button"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:layout_gravity="bottom"
-
                 android:background="@drawable/disable_button_twitter"
                 android:text="Next"
                 android:textColor="@color/white"

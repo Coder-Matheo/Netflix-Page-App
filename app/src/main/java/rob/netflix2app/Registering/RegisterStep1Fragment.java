@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -36,15 +37,11 @@ import rob.netflix2app.RoomDatabase.BioObj;
 import rob.netflix2app.RoomDatabase.DatabaseViewModel;
 import rob.netflix2app.RoomDatabase.MySingleton_Bio_DB;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RegisterFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class RegisterFragment extends Fragment {
 
-    private static final String TAG = RegisterFragment.class.getSimpleName();
-    private ImageButton register_btn;
+public class RegisterStep1Fragment extends Fragment {
+
+    private static final String TAG = RegisterStep1Fragment.class.getSimpleName();
+    private Button registerStep1Button;
     private TextView loginPageTextView;
     AutoCompleteTextView emailRegisterEditText;
     AutoCompleteTextView numberRegisterEditText;
@@ -53,28 +50,13 @@ public class RegisterFragment extends Fragment {
     NavController navController;
 
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public RegisterFragment() {
+    public RegisterStep1Fragment() {
         // Required empty public constructor
     }
 
 
-    public static RegisterFragment newInstance(String param1, String param2) {
-        RegisterFragment fragment = new RegisterFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,7 +69,7 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_register, container, false);
+        View view = inflater.inflate(R.layout.fragment_register_step1, container, false);
         initialization(view);
         emailCheckAutoCompleteTextView(this);
         return view;
@@ -95,17 +77,15 @@ public class RegisterFragment extends Fragment {
 
 
     private void initialization(View view) {
-        register_btn = view.findViewById(R.id.register_btn);
+        registerStep1Button = view.findViewById(R.id.registerStep1Button);
         loginPageTextView = view.findViewById(R.id.loginPageTextView);
         emailRegisterEditText = view.findViewById(R.id.emailRegisterEditText);
         numberRegisterEditText = view.findViewById(R.id.numberRegisterEditText);
         passwordEditText = view.findViewById(R.id.passwordEditText);
 
-
-
     }
 
-    private void emailCheckAutoCompleteTextView(RegisterFragment registerFragment) {
+    private void emailCheckAutoCompleteTextView(RegisterStep1Fragment registerStep1Fragment) {
         emailRegisterEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
@@ -114,13 +94,22 @@ public class RegisterFragment extends Fragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 boolean boolEmailValidation = emailValidation( charSequence);
                 if (boolEmailValidation){
-                    register_btn.setEnabled(true);
+                    registerStep1Button.setEnabled(true);
                     Log.i(TAG, "onTextChanged: ");
                 }else {
-                    register_btn.setEnabled(false);
+                    registerStep1Button.setEnabled(false);
                 }
 
-                register_btn.setOnClickListener(new View.OnClickListener() {
+                if (charSequence.length() == 0){
+                    registerStep1Button.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.disable_button_twitter));
+                }
+                if (charSequence.length() >= 1){
+                    registerStep1Button.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.enable_button_twitter));
+                }
+
+
+
+                registerStep1Button.setOnClickListener(new View.OnClickListener() {
                     
                     @Override
                     public void onClick(View view) {
@@ -129,7 +118,7 @@ public class RegisterFragment extends Fragment {
                                 .databaseBio_dao()
                                 .findUserByNamePass(emailRegisterEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
 
-                        userFind.observe(RegisterFragment.this, new Observer<BioObj>() {
+                        userFind.observe(getViewLifecycleOwner(), new Observer<BioObj>() {
                             @Override
                             public void onChanged(BioObj bioObj) {
                                 if (bioObj != null){
@@ -159,7 +148,7 @@ public class RegisterFragment extends Fragment {
                                             BioObj login_username_password = new BioObj(emailRegisterEditText.getText().toString().trim().toUpperCase(),
                                                     passwordEditText.getText().toString().trim());
 
-                                            RegisterFragment.InsertAsyncTask insertAsyncTask = new RegisterFragment.InsertAsyncTask();
+                                            RegisterStep1Fragment.InsertAsyncTask insertAsyncTask = new RegisterStep1Fragment.InsertAsyncTask();
                                             insertAsyncTask.execute(login_username_password);
 
                                             Snackbar.make(view, "You Haven't a Account ", BaseTransientBottomBar.LENGTH_SHORT).show();

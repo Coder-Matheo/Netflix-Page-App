@@ -14,7 +14,7 @@ import android.widget.EditText;
 import rob.netflix2app.R;
 import rob.netflix2app.Screen.NavigationDrawerMainActivity;
 
-public class CreatingAccountSignUpRegistering extends Fragment {
+public class RegisterStep3Fragment extends Fragment {
 
     EditText nameEditTextSignUp;
     EditText phoneOrEmailEditTextSignUp;
@@ -22,7 +22,7 @@ public class CreatingAccountSignUpRegistering extends Fragment {
     Button signUpButton;
 
 
-    public CreatingAccountSignUpRegistering() {
+    public RegisterStep3Fragment() {
         // Required empty public constructor
     }
 
@@ -35,7 +35,7 @@ public class CreatingAccountSignUpRegistering extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_create_your_account_sign_up_registering, container, false);
+        View view = inflater.inflate(R.layout.fragment_register_step3, container, false);
         nameEditTextSignUp = view.findViewById(R.id.nameEditTextSignUp);
         phoneOrEmailEditTextSignUp = view.findViewById(R.id.phoneOrEmailEditTextSignUp);
         dataOfBirthEditTextSignUp = view.findViewById(R.id.dataOfBirthEditTextSignUp);

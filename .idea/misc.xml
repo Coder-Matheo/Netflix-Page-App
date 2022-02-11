@@ -82,12 +82,16 @@
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_home.xml" value="0.2947916666666667" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_home_netflix.xml" value="0.18020833333333333" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_login.xml" value="0.3183876811594203" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_login_step1.xml" value="0.322463768115942" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_login_step2.xml" value="0.322463768115942" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_message.xml" value="0.3138586956521739" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_notifications.xml" value="0.2947916666666667" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_private_message.xml" value="0.2947916666666667" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_profile.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_register.xml" value="0.264" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_register_step1.xml" value="0.2578125" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_register_step2.xml" value="0.2578125" />
+        <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_register_step3.xml" value="0.2578125" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_search.xml" value="0.3197463768115942" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_view_detail_tweet.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/alidi/StudioProjects/Netflix-Page-App/app/src/main/res/layout/fragment_view_detail_tweet_post.xml" value="0.2033514492753623" />
