@@ -83,7 +83,7 @@
 
 
             <EditText
-                android:id="@+id/emailEditText"
+                android:id="@+id/emailLoginEditText"
                 android:layout_width="340dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"

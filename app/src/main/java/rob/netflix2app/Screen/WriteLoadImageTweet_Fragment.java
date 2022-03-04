@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,7 +22,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+
+import java.util.concurrent.ExecutionException;
+
 import rob.netflix2app.R;
+import rob.netflix2app.RoomDatabase.ManipulateValueDatabase;
 
 
 public class WriteLoadImageTweet_Fragment extends Fragment {
@@ -33,6 +38,8 @@ public class WriteLoadImageTweet_Fragment extends Fragment {
     Button new_tweet_button;
     Button cancel_new_tweet_button;
     Button drafts_new_tweet_button;
+    ManipulateValueDatabase manipulateValueDatabase;
+
 
 
 
@@ -51,8 +58,7 @@ public class WriteLoadImageTweet_Fragment extends Fragment {
         //if jump to Activity, automatically click(focus) on Edittext
         what_happening_edit_text.requestFocus();
 
-
-
+        manipulateValueDatabase = new ManipulateValueDatabase(getContext().getApplicationContext());
 
 
 
@@ -92,8 +98,25 @@ public class WriteLoadImageTweet_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ((InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(((Activity) view.getContext()).getCurrentFocus().getWindowToken(), 0);
+
+
+                //valid edittext isn't empty
+                if (!TextUtils.isEmpty(what_happening_edit_text.getText().toString())){
+                    //oriented value to manipulateValueDatabase and inserted through fun in Database
+                    try {
+                        manipulateValueDatabase.insert_single_tweet(1, what_happening_edit_text.getText().toString().trim(),
+                                2);
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
             }
         });
+
         what_happening_edit_text.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

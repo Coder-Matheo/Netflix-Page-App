@@ -7,19 +7,19 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 @Database(entities = {BioObj.class}, version = 1)
-public abstract class MySingleton_Bio_DB extends RoomDatabase {
+public abstract class MySingletonRoom_Bio_DB extends RoomDatabase {
 
     private static final String BIO_DB = "BIO_DB";
     public abstract DatabaseBio_Dao databaseBio_dao();
-    private static volatile MySingleton_Bio_DB INSTANCE;
+    private static volatile MySingletonRoom_Bio_DB INSTANCE;
 
 
-    public static MySingleton_Bio_DB getInstance(Context context) {
+    public static MySingletonRoom_Bio_DB getInstance(Context context) {
         if (INSTANCE == null){
-            synchronized (MySingleton_Bio_DB.class){
+            synchronized (MySingletonRoom_Bio_DB.class){
                 if (INSTANCE == null){
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            MySingleton_Bio_DB.class, BIO_DB).build();
+                            MySingletonRoom_Bio_DB.class, BIO_DB).build();
                 }
             }
         }

@@ -23,7 +23,6 @@ import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
@@ -35,7 +34,7 @@ import java.util.regex.Pattern;
 import rob.netflix2app.R;
 import rob.netflix2app.RoomDatabase.BioObj;
 import rob.netflix2app.RoomDatabase.DatabaseViewModel;
-import rob.netflix2app.RoomDatabase.MySingleton_Bio_DB;
+import rob.netflix2app.RoomDatabase.MySingletonRoom_Bio_DB;
 
 
 public class RegisterStep1Fragment extends Fragment {
@@ -114,7 +113,7 @@ public class RegisterStep1Fragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         navController.navigate(R.id.action_registerFragment_to_customizeYourAccountRegistering);
-                        LiveData<BioObj> userFind = MySingleton_Bio_DB.getInstance(getContext())
+                        LiveData<BioObj> userFind = MySingletonRoom_Bio_DB.getInstance(getContext())
                                 .databaseBio_dao()
                                 .findUserByNamePass(emailRegisterEditText.getText().toString().trim(), passwordEditText.getText().toString().trim());
 
@@ -200,7 +199,7 @@ public class RegisterStep1Fragment extends Fragment {
 
         @Override
         protected Void doInBackground(BioObj... bioObjs) {
-            MySingleton_Bio_DB.getInstance(getContext())
+            MySingletonRoom_Bio_DB.getInstance(getContext())
                     .databaseBio_dao()
                     .insertBio(bioObjs[0]);
             Log.i(TAG, "doInBackground: Created");

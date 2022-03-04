@@ -52,7 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.username_text_view_tweet_item_recycler.setText(mData.get(position).getUsername());
         holder.tweet_text_view_tweet_item_recycler.setText(mData.get(position).getTextTweet());
-        holder.profile_of_tweet_item_recycler.setImageResource(mData.get(position).getPhote());
+        holder.profile_of_tweet_item_recycler.setImageResource(mData.get(position).getPhoto());
     }
 
 
@@ -111,7 +111,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 @Override
                 public void onClick(View view) {
                     recyclerViewClickInterface.onItemLinearLayoutClickInterface(getAdapterPosition(),mData.get(getAdapterPosition()).getUsername(),
-                            mData.get(getAdapterPosition()).getTextTweet(), mData.get(getAdapterPosition()).getPhote());
+                            mData.get(getAdapterPosition()).getTextTweet(), mData.get(getAdapterPosition()).getPhoto());
 
                 }
             });
@@ -120,7 +120,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 @Override
                 public void onClick(View view) {
 
-                    Toast.makeText(itemView.getContext(), "Profile of user in Tweet "+mData.get(getAdapterPosition()).getPhote()
+                    Toast.makeText(itemView.getContext(), "Profile of user in Tweet "+mData.get(getAdapterPosition()).getPhoto()
                              , Toast.LENGTH_SHORT).show();
                 }
             });

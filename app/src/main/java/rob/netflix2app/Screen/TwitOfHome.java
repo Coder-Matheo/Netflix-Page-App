@@ -4,12 +4,12 @@ public class TwitOfHome {
 
     private String username;
     private String textTweet;
-    private int phote;
+    private int photo;
 
     public TwitOfHome(String username, String textTweet, int phone1) {
         this.username = username;
         this.textTweet = textTweet;
-        this.phote = phone1;
+        this.photo = phone1;
     }
 
     public String getTextTweet() {
@@ -20,12 +20,12 @@ public class TwitOfHome {
         this.textTweet = textTweet;
     }
 
-    public int getPhote() {
-        return phote;
+    public int getPhoto() {
+        return photo;
     }
 
-    public void setPhote(int phote) {
-        this.phote = phote;
+    public void setPhoto(int photo) {
+        this.photo = photo;
     }
 
     public String getUsername() {

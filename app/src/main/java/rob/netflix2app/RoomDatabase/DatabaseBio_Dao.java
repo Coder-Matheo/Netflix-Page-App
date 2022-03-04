@@ -15,9 +15,10 @@ public interface DatabaseBio_Dao {
     @Query("SELECT * FROM bioobj")
     LiveData<List<BioObj>> getAllUsers();
 
-    @Query("SELECT * FROM bioobj WHERE user_name LIKE :username AND password LIKE :password LIMIT 1")
-    LiveData<BioObj> findUserByNamePass(String username, String password);
+    @Query("SELECT * FROM bioobj WHERE user_name LIKE :usernameOrPhoneOrEmail OR phone_number LIKE user_name " +
+            "AND password LIKE :password  LIMIT 1")
+    LiveData<BioObj> findUserByNamePass(String usernameOrPhoneOrEmail, String password);
 
-
-
+    @Query("SELECT * FROM bioobj WHERE user_name LIKE :trim OR phone_number LIKE :trim LIKE 1")
+    LiveData<BioObj> findUserByNameOrPhoneNumberOrEmail(String trim);
 }

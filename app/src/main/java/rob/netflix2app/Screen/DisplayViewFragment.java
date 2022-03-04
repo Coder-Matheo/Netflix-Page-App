@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +14,19 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import rob.netflix2app.R;
+import rob.netflix2app.RoomDatabase.ManipulateValueDatabase;
 
 
 public class DisplayViewFragment extends Fragment {
 
+    private static final String TAG = DisplayViewFragment.class.getSimpleName();
     private TabLayout tab_layout_display_view;
     private ViewPagerAdapter view_pager_display_Adapter;
     private ViewPager view_pager_display_view;
+    ManipulateValueDatabase manipulateValueDatabase;
 
     List<TwitOfHome> lstTweet;
     List<TwitOfHome> lstTweetlike;
@@ -37,10 +42,25 @@ public class DisplayViewFragment extends Fragment {
         tab_layout_display_view = view.findViewById(R.id.tab_layout_display_view);
         view_pager_display_view = view.findViewById(R.id.view_pager_display_view);
         view_pager_display_Adapter = new ViewPagerAdapter(getChildFragmentManager());
+
+        manipulateValueDatabase = new ManipulateValueDatabase(getContext().getApplicationContext());
+
         //getSupportFragmentManager
         //Add Fragment Here
         lstTweet = new ArrayList<>();
-        lstTweet.add(new TwitOfHome("Mario ", "Hallo guys, Today weather were so cold, if you like come to enjoy", R.drawable.fran1));
+        try {
+            List<String> getValueFromDatabase = manipulateValueDatabase.getAllPostTweet();
+            for (int i = 0; i < getValueFromDatabase.size(); i++){
+                lstTweet.add(new TwitOfHome("Mario ", getValueFromDatabase.get(i), R.drawable.fran1));
+            }
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
         lstTweet.add(new TwitOfHome("Matt Bro", "Hi Bro, we go tomorrow to football", R.drawable.fran2));
         lstTweet.add(new TwitOfHome("Sherry lovely", "Man, let's going Party", R.drawable.fran3));
         lstTweet.add(new TwitOfHome("New York Visit", "My Love, Now in New York", R.drawable.fran4));

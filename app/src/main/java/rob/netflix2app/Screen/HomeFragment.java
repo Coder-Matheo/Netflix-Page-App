@@ -27,7 +27,7 @@ import java.util.List;
 
 import rob.netflix2app.R;
 import rob.netflix2app.RoomDatabase.DatabaseViewModel;
-import rob.netflix2app.RoomDatabase.MySingleton_Post_DB;
+import rob.netflix2app.RoomDatabase.MySingletonRoom_Post_DB;
 import rob.netflix2app.RoomDatabase.PostObj;
 
 
@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
 
         commentRetweetLikeShare_class = new CommentRetweetLikeShare_Class();
         initialRecycler(view);
-        insertCommentLikeRetweet();
+        //insertCommentLikeRetweet();
         return view;
     }
 
@@ -87,7 +87,7 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
         button_include.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(view.getContext(), "include Button", Toast.LENGTH_SHORT).show();
+
 
                 //startActivity(new Intent(view.getContext(), WriteLoadImageTweet_Fragment.class));
 
@@ -152,9 +152,11 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
             commentRetweetLikeShare_class.toastFunction("onItemRetweetClickInterface Liked : " + position, getContext());
 
             //(int bioId, String messagePost, Integer like)
-            PostObj postObj = new PostObj(1);
+            /*PostObj postObj = new PostObj(1);
             InsertPostAsyncTask insertPostAsyncTask = new InsertPostAsyncTask();
-            insertPostAsyncTask.execute(postObj);
+            insertPostAsyncTask.execute(postObj);*/
+
+
             toggleOfLikeImageView = 1;
         } else if (toggleOfLikeImageView == 1) {
             commentRetweetLikeShare_class.toastFunction("onItemRetweetClickInterface Unliked : " + position, getContext());
@@ -170,11 +172,11 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
     }
 
 
-    public void insertCommentLikeRetweet() {
+/*    public void insertCommentLikeRetweet() {
 
 
         Log.i(TAG, "onChanged: empty");
-        LiveData<List<PostObj>> tweetPostList = MySingleton_Post_DB.getInstance(getContext())
+        LiveData<List<PostObj>> tweetPostList = MySingletonRoom_Post_DB.getInstance(getContext())
                 .databasePost_dao()
                 .getAllTweetPost();
 
@@ -197,14 +199,14 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
 
         @Override
         protected Void doInBackground(PostObj... postObjs) {
-            MySingleton_Post_DB.getInstance(getContext())
+            MySingletonRoom_Post_DB.getInstance(getContext())
                     .databasePost_dao()
                     .insert(postObjs[0]);
 
             //commentRetweetLikeShare_class.toastFunction("Inserted", getContext());
             return null;
         }
-    }
+    }*/
 
 
 }

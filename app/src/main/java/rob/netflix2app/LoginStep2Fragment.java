@@ -35,7 +35,7 @@ import java.util.regex.Pattern;
 
 import rob.netflix2app.RoomDatabase.BioObj;
 import rob.netflix2app.RoomDatabase.DatabaseViewModel;
-import rob.netflix2app.RoomDatabase.MySingleton_Bio_DB;
+import rob.netflix2app.RoomDatabase.MySingletonRoom_Bio_DB;
 import rob.netflix2app.Screen.NavigationDrawerMainActivity;
 
 
@@ -110,9 +110,11 @@ public class LoginStep2Fragment extends Fragment {
                 boolean boolEmailValidation = emailValidation( charSequence);
 
                 if (boolEmailValidation){
-                    //loginButton.setEnabled(true);
+                    loginStep2Button.setEnabled(true);
+                    checkExistsUserInDatabase(emailStep2EditText.getText().toString().trim(),
+                            passwordStep2EditText.getText().toString());
                 }else {
-                    //loginButton.setEnabled(false);
+                    loginStep2Button.setEnabled(false);
                 }
 
                 if (charSequence.length() == 0){
@@ -126,12 +128,13 @@ public class LoginStep2Fragment extends Fragment {
 
                     @Override
                     public void onClick(View view) {
+                        checkExistsUserInDatabase();
                         Toast.makeText(getContext(), "Test of clicked", Toast.LENGTH_SHORT).show();
                         //check database, if username and password exists, then return the value.
                         //if return Value Password and Username, leap to ScreenActivity
-                        LiveData<BioObj> userFind = MySingleton_Bio_DB.getInstance(getContext())
+                        LiveData<BioObj> userFind = MySingletonRoom_Bio_DB.getInstance(getContext())
                                 .databaseBio_dao()
-                                .findUserByNamePass(emailStep2EditText.getText().toString().trim(), passwordStep2EditText.getText().toString().trim());
+                                .findUserByNameOrPhoneNumberOrEmail(emailStep2EditText.getText().toString().trim());
 
                         userFind.observe(getViewLifecycleOwner(), new Observer<BioObj>() {
                             @Override
@@ -140,6 +143,7 @@ public class LoginStep2Fragment extends Fragment {
                                 try {
                                     if (bioObj == null){
                                         customizeSnackBarFunction(view, "You have a account ...", "Register");
+                                        checkExistsUserInDatabase();
                                     }else {
                                         customizeSnackBarFunction(view, "You have a Account", "Register");
                                     }
@@ -160,14 +164,52 @@ public class LoginStep2Fragment extends Fragment {
     }
 
 
+    public void checkExistsUserInDatabase(){
+        List<BioObj> existsUserList = new ArrayList<>();
+
+        LiveData<List<BioObj>> userList = MySingletonRoom_Bio_DB.getInstance(getContext())
+                .databaseBio_dao()
+                .getAllUsers();
+
+        userList.observe(LoginStep2Fragment.this, new Observer<List<BioObj>>() {
+            @Override
+            public void onChanged(List<BioObj> bioObjs) {
+                if (bioObjs != null){
+                    for (int i = 0; i < bioObjs.size(); i++){
+                        Log.i(TAG, "Account User: "+ bioObjs.get(i).getUserName());
+                        Log.i(TAG, "onChanged: "+ bioObjs.get(i).getPassword());
+
+
+                    }
+                }
+            }
+        });
+
+
+
+        LiveData<BioObj> userFind = MySingletonRoom_Bio_DB.getInstance(getContext())
+                .databaseBio_dao()
+                .findUserByNamePass(emailStep2EditText.getText().toString().trim(),
+                        passwordStep2EditText.getText().toString().trim());
+
+        userFind.observe(LoginStep2Fragment.this, new Observer<BioObj>() {
+            @Override
+            public void onChanged(BioObj bioObj) {
+                if (bioObj != null){
+                    Log.i(TAG, "onChanged11: "+ bioObj.getUserName());
+
+
+                }
+            }
+        });
+
+    }
+
 
 
     public void checkExistsUserInDatabase(String emailAddress,  String password){
-        List<BioObj> existsUserList = new ArrayList<>();
 
-
-
-        LiveData<List<BioObj>> userList = MySingleton_Bio_DB.getInstance(getContext())
+        LiveData<List<BioObj>> userList = MySingletonRoom_Bio_DB.getInstance(getContext())
                 .databaseBio_dao()
                 .getAllUsers();
 
@@ -179,7 +221,6 @@ public class LoginStep2Fragment extends Fragment {
                         Log.i(TAG, "onChanged: "+ bioObjs.get(i).getUserName());
                         Log.i(TAG, "onChanged: "+ bioObjs.get(i).getPassword());
 
-
                     }
                 }
             }
@@ -187,7 +228,7 @@ public class LoginStep2Fragment extends Fragment {
 
 
 
-        LiveData<BioObj> userFind = MySingleton_Bio_DB.getInstance(getContext())
+        LiveData<BioObj> userFind = MySingletonRoom_Bio_DB.getInstance(getContext())
                 .databaseBio_dao()
                 .findUserByNamePass(emailStep2EditText.getText().toString().trim(), passwordStep2EditText.getText().toString().trim());
 
@@ -196,8 +237,6 @@ public class LoginStep2Fragment extends Fragment {
             public void onChanged(BioObj bioObj) {
                 if (bioObj != null){
                     Log.i(TAG, "onChanged11: "+ bioObj.getUserName());
-
-
                 }
             }
         });

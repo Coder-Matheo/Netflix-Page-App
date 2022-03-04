@@ -14,8 +14,8 @@ public interface DatabasePost_Dao {
     void insert(PostObj postObj);
 
     @Query("SELECT * FROM postobj")
-    LiveData<List<PostObj>> getAllTweetPost();
-
+    List<PostObj> getAllTweetPost();
+    //LiveData<List<PostObj>> getAllTweetPost();
 
 
 

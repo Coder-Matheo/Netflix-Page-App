@@ -9,15 +9,15 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
 public class DatabaseViewModel extends AndroidViewModel {
-    MySingleton_Bio_DB mySingleton_database;
-    MySingleton_Post_DB mySingleton_post_db;
+    MySingletonRoom_Bio_DB mySingleton_database;
+    MySingletonRoom_Post_DB mySingleton_Room_post_db;
 
 
     public DatabaseViewModel(@NonNull Application application) {
         super(application);
 
-        mySingleton_database = MySingleton_Bio_DB.getInstance(application.getApplicationContext());
-        mySingleton_post_db = MySingleton_Post_DB.getInstance(application.getApplicationContext());
+        mySingleton_database = MySingletonRoom_Bio_DB.getInstance(application.getApplicationContext());
+        mySingleton_Room_post_db = MySingletonRoom_Post_DB.getInstance(application.getApplicationContext());
 
     }
 
@@ -30,7 +30,7 @@ public class DatabaseViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<PostObj>> getAllTweetPostQuery(){
-        return mySingleton_post_db.databasePost_dao().getAllTweetPost();
+        return (LiveData<List<PostObj>>) mySingleton_Room_post_db.databasePost_dao().getAllTweetPost();
     }
 
 
