@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +24,7 @@ import androidx.fragment.app.Fragment;
 import java.util.concurrent.ExecutionException;
 
 import rob.netflix2app.R;
-import rob.netflix2app.RoomDatabase.ManipulateValueDatabase;
+import rob.netflix2app.RoomDatabase.ManipulateValueDatabasePost;
 
 
 public class WriteLoadImageTweet_Fragment extends Fragment {
@@ -38,7 +36,7 @@ public class WriteLoadImageTweet_Fragment extends Fragment {
     Button new_tweet_button;
     Button cancel_new_tweet_button;
     Button drafts_new_tweet_button;
-    ManipulateValueDatabase manipulateValueDatabase;
+    ManipulateValueDatabasePost manipulateValueDatabasePost;
 
 
 
@@ -58,7 +56,7 @@ public class WriteLoadImageTweet_Fragment extends Fragment {
         //if jump to Activity, automatically click(focus) on Edittext
         what_happening_edit_text.requestFocus();
 
-        manipulateValueDatabase = new ManipulateValueDatabase(getContext().getApplicationContext());
+        manipulateValueDatabasePost = new ManipulateValueDatabasePost(getContext().getApplicationContext());
 
 
 
@@ -104,7 +102,7 @@ public class WriteLoadImageTweet_Fragment extends Fragment {
                 if (!TextUtils.isEmpty(what_happening_edit_text.getText().toString())){
                     //oriented value to manipulateValueDatabase and inserted through fun in Database
                     try {
-                        manipulateValueDatabase.insert_single_tweet(1, what_happening_edit_text.getText().toString().trim(),
+                        manipulateValueDatabasePost.insert_single_tweet(1, what_happening_edit_text.getText().toString().trim(),
                                 2);
                     } catch (ExecutionException e) {
                         e.printStackTrace();

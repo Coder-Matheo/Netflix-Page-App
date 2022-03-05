@@ -1,10 +1,10 @@
 package rob.netflix2app.RoomDatabase;
 
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -16,6 +16,13 @@ public interface DatabasePost_Dao {
     @Query("SELECT * FROM postobj")
     List<PostObj> getAllTweetPost();
     //LiveData<List<PostObj>> getAllTweetPost();
+
+    @Update
+    void updateLike(PostObj postObj);
+
+    @Query("SELECT * FROM postobj WHERE uid LIKE :uid LIMIT 1")
+    PostObj findById(int uid);
+
 
 
 

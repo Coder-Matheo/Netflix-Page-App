@@ -45,11 +45,12 @@ public class PostObj {
     private String default9;
 
 
-    @Ignore
+
     public PostObj(Integer like) {
         this.like = like;
     }
 
+    @Ignore
     public PostObj(int bioId, String messagePost, Integer like) {
         this.bioId = bioId;
         this.messagePost = messagePost;

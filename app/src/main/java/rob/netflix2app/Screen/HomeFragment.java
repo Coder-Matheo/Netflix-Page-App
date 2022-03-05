@@ -27,6 +27,7 @@ import java.util.List;
 
 import rob.netflix2app.R;
 import rob.netflix2app.RoomDatabase.DatabaseViewModel;
+import rob.netflix2app.RoomDatabase.ManipulateValueDatabasePost;
 import rob.netflix2app.RoomDatabase.MySingletonRoom_Post_DB;
 import rob.netflix2app.RoomDatabase.PostObj;
 
@@ -44,6 +45,7 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
     NavController navControllerHome;
     FloatingActionButton button_include;
     BottomSheetDialog bottomSheetDialogWriteTweet;
+    ManipulateValueDatabasePost manipulateValueDatabasePost;
 
     //initial Variable
     int toggleOfLikeImageView = 0;
@@ -61,8 +63,10 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
         //init Database
         databaseViewModel = ViewModelProviders.of(this).get(DatabaseViewModel.class);
 
-
         commentRetweetLikeShare_class = new CommentRetweetLikeShare_Class();
+        manipulateValueDatabasePost = new ManipulateValueDatabasePost(getContext().getApplicationContext());
+
+
         initialRecycler(view);
         //insertCommentLikeRetweet();
         return view;
@@ -147,9 +151,10 @@ public class HomeFragment extends Fragment implements RecyclerViewClickInterface
 
     @Override
     public void onItemLikeClickInterface(int position) {
-
+        manipulateValueDatabasePost.updateLikePost(116);
         if (toggleOfLikeImageView == 0) {
             commentRetweetLikeShare_class.toastFunction("onItemRetweetClickInterface Liked : " + position, getContext());
+
 
             //(int bioId, String messagePost, Integer like)
             /*PostObj postObj = new PostObj(1);

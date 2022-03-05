@@ -17,7 +17,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import rob.netflix2app.R;
-import rob.netflix2app.RoomDatabase.ManipulateValueDatabase;
+import rob.netflix2app.RoomDatabase.ManipulateValueDatabaseBio;
+import rob.netflix2app.RoomDatabase.ManipulateValueDatabasePost;
 
 
 public class DisplayViewFragment extends Fragment {
@@ -26,8 +27,8 @@ public class DisplayViewFragment extends Fragment {
     private TabLayout tab_layout_display_view;
     private ViewPagerAdapter view_pager_display_Adapter;
     private ViewPager view_pager_display_view;
-    ManipulateValueDatabase manipulateValueDatabase;
-
+    ManipulateValueDatabasePost manipulateValueDatabasePost;
+    ManipulateValueDatabaseBio manipulateValueDatabaseBio;
     List<TwitOfHome> lstTweet;
     List<TwitOfHome> lstTweetlike;
 
@@ -43,14 +44,15 @@ public class DisplayViewFragment extends Fragment {
         view_pager_display_view = view.findViewById(R.id.view_pager_display_view);
         view_pager_display_Adapter = new ViewPagerAdapter(getChildFragmentManager());
 
-        manipulateValueDatabase = new ManipulateValueDatabase(getContext().getApplicationContext());
+        manipulateValueDatabasePost = new ManipulateValueDatabasePost(getContext().getApplicationContext());
 
         //getSupportFragmentManager
         //Add Fragment Here
         lstTweet = new ArrayList<>();
         try {
-            List<String> getValueFromDatabase = manipulateValueDatabase.getAllPostTweet();
+            List<String> getValueFromDatabase = manipulateValueDatabasePost.getAllPostTweet();
             for (int i = 0; i < getValueFromDatabase.size(); i++){
+                Log.i(TAG, "onCreateView: "+ getValueFromDatabase.get(i));
                 lstTweet.add(new TwitOfHome("Mario ", getValueFromDatabase.get(i), R.drawable.fran1));
             }
 
@@ -59,6 +61,8 @@ public class DisplayViewFragment extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
 
 
         lstTweet.add(new TwitOfHome("Matt Bro", "Hi Bro, we go tomorrow to football", R.drawable.fran2));
